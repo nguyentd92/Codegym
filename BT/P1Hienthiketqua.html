@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function showMessage(){
+            alert('Xin chào!');
+        }
+        function showMessage1(){
+            document.getElementById('messageDiv').innerHTML = 'Xin chào!';
+        }
+        function showMessage2(){
+            document.write('Xin chào!');
+        }
+        function showMessage3(){
+            console.log('Xin chào!');
+        }
+    </script>
+</head>
+<body>
+    <h6>Hiển thị kết quả sử dụng hàm alert():</h6>
+    <button type="button" onclick="showMessage();">Alert()</button>
+
+    <h6>Hiển thị kết quả sử dụng thẻ HTML:</h6>
+    <div id="messageDiv">Text change here</div>
+    <button type="button" onclick="showMessage1();">HTML Tag</button>
+
+    <h6>Hiển thị kết quả sử dụng hàm document.write():</h6>
+    <button type="button" onclick="showMessage2();">Document.Write</button>
+
+    <h6>Hiển thị kết quả sử dụng hàm console.log():</h6>
+    <button type="button" onclick="showMessage3();">Console.Log</button>
+</body>
+</html>
