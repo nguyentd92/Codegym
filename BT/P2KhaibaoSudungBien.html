@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Danh Nguyen - Khai bao va su dung bien</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <h4>Bài 1: Khai báo các biến thuộc các kiểu khác nhau, gán giá trị cho chúng và in ra tài liệu HTML.</h4>
+    <script>
+        var i = 10;
+        var f = 20.5;
+        var b = true;
+        var s = "Ha Noi";
+
+        document.write("i = " + i);
+        document.write("<br/>");
+        
+        document.write("f = " + f);
+        document.write("<br/>");
+
+        document.write("b = " + b);
+        document.write("<br/>");
+        
+        document.write("s = " + s);
+    </script>
+    <h4>Bài 2: Viết một đoạn mã Javascript, khai báo biến width chứa giá trị độ rộng của hình chữ nhật, biến height chứa giá trị chiều cao của hình chữ nhật. In ra màn hình diện tích của hình chữ nhật đó.</h4>
+    <script>
+        var width = 20;
+        var height = 10;
+        var area = width * height;
+        document.write("Area = " + area);
+    </script>
+    <h4>Dùng hàm prompt() để nhập 2 số từ bàn phím, lưu vào 2 biến là a và b. Kiểm tra xem a có phải là bội số của b hay không (tức là a có chia hết cho b hay không). Hiển thị kết quả ra màn hình bằng cách sử dụng hàm alert()</h4>
+    <script>
+        var a;
+        var b;
+
+        a = prompt("Nhập số A:");
+        b = prompt("Nhập số B:");
+
+        if (a % b == 0) document.write(a + " chia hết cho " + b);
+        else document.write(a+" không chia hết cho b " +b);
+    </script>
+</body>
+</html>
