@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhung JS</title>
+    <script src="P1NhungJS.js"></script>
+    <style>
+        h4{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<h3>Bài 1: Viết chương trình nhập điểm của một sinh viên cho các môn: Vật lý, Hóa học, và Sinh học. Sau đó hiển thị điểm trung bình và tổng của những điểm này.</h3>
+<label>Điểm Hóa <input id="Hoa" type="text" value=""/></label><br>
+<label>Điểm Lý  <input id="Ly" type="text" value=""/></label><br>
+<label>Điểm Sinh<input id="Sinh" type="text" value=""/></label><br>
+<button name="b1tinh" onclick="Tinhdiem();">Tính điểm</button>
+<h4 id="b1result">Result: </h4>
+<script>
+function Tinhdiem(){
+    var a = parseInt(document.getElementById("Hoa").value);
+    var b = parseInt(document.getElementById("Ly").value);
+    var c = parseInt(document.getElementById("Sinh").value);
+
+    var Avg = (a + b + c )/3;
+    document.getElementById("b1result").innerHTML +=Avg;
+}
+</script>
+
+<h3>Bài 2:  Viết chương trình nhập một giá trị là độ 0C (Celsius) và chuyển nó sang độ 0F (Fahrenheit). [Hướng dẫn: C/5 = (F-32)/9]</h3>
+<label>Nhập nhiệt độ oC:<input id="Cel" type="text" value=""/></label><br>
+<button name="b2tinh" onclick="Quydoi();">Quy đổi</button>
+<h4 id="b2result"></h4>
+<script>
+function Quydoi() {
+    var Fah = parseFloat(document.getElementById("Cel").value)*9/5+32;
+document.getElementById("b2result").innerHTML = "Result: " + Fah + "oF";
+}
+</script>
+
+<h3>Bài 3 & 4:  Viết chương trình tính diện tích và chu vi hình tròn</h3>
+
+<label>Nhập bán kính R:<input id="CirR" type="text" value=""/></label><br>
+<button name="b3tinh" onclick="Circle();">Quy đổi</button>
+<h4 id="b3result"></h4>
+<script>
+    function Circle(){
+    var R = parseFloat(document.getElementById("CirR").value);
+    var P = R*2*3.14;
+    var area = R*R*3.14;
+    document.getElementById("b3result").innerHTML = "Chu vi: " + P + "<br>"+"Diện tích: " + area;
+    }
+</script>
+</body>
+</html>
