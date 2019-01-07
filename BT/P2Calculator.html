@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Danh CodeGymHue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <h2>Calculator</h2>
+    <input type="text" id="In1"/><input type="text" id="In2"/><br>
+
+    <button id="add" onclick="addition();">Addition(+)</button>
+    <button id="sub" onclick="subtraction();">Subtraction(-)</button>
+    <button id="multi" onclick="multipli();">Multiplication(X)</button>
+    <button id="div" onclick="division();">Division(/)</button>
+
+    <h3 id="Result"></h3>
+<script>
+
+    function addition(){
+        var result = parseInt(document.getElementById("In1").value) + parseInt(document.getElementById("In2").value);
+        document.getElementById("Result").innerHTML="Result: " + result;
+    }
+
+    function subtraction(){
+        var result = parseInt(document.getElementById("In1").value) - parseInt(document.getElementById("In2").value);
+        document.getElementById("Result").innerHTML="Result: " + result;
+    }
+
+    function multipli(){
+        var result = parseInt(document.getElementById("In1").value) * parseInt(document.getElementById("In2").value);
+        document.getElementById("Result").innerHTML="Result: " + result;
+    }
+
+    function division(){
+        var result = parseInt(document.getElementById("In1").value) / parseInt(document.getElementById("In2").value);
+        document.getElementById("Result").innerHTML="Result: " + result;
+    }
+</script>
+</body>
+</html>
