@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhung JS</title>
+    <script src="P1NhungJS.js"></script>
+</head>
+<body>
+<h3>Bài 1: Viết chương trình nhập điểm của một sinh viên cho các môn: Vật lý, Hóa học, và Sinh học. Sau đó hiển thị điểm trung bình và tổng của những điểm này.</h3>
+<label><input id="Hoa" type="text" value=""/>Diem Hoa</label><br>
+<label><input id="Ly" type="text" value=""/>Diem Ly</label><br>
+<label><input id="Sinh" type="text" value=""/>Diem Sinh</label><br>
+<button name="tinh" onclick="Tinhdiem();">Tinh diem</button><br>
+<script>
+function Tinhdiem(){
+    var a = parseInt(document.getElementById("Hoa").value);
+    var b = parseInt(document.getElementById("Ly").value);
+    var c = parseInt(document.getElementById("Sinh").value);
+
+    var Avg = (a + b + c )/3;
+    document.write("<h1>KQ</h1>");
+}
+</script>
+
+<h3>Bài 2:  Viết chương trình nhập một giá trị là độ 0C (Celsius) và chuyển nó sang độ 0F (Fahrenheit). [Hướng dẫn: C/5 = (F-32)/9]</h3>
+<script>
+
+</script>
+</body>
+</html>
