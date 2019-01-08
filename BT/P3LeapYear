@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <script>
+        var year = parseInt(prompt("Input year:"));
+        var isLeapYear = false;
+        
+        if (year % 4 == 0){
+            if (year % 100 != 0){
+                isLeapYear = true;
+            }
+            else if (year % 400 == 0){
+                isLeapYear = true;
+            };
+         };
+         
+        if (isLeapYear) {
+            alert(year + " is Leap Year");
+        }
+        else {
+            alert(year + " is not Leap Year");
+        }
+
+
+    </script>
+</body>
+</html>
