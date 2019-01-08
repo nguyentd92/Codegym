@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+</head>
+<body>
+    <label>Tháng:</label>
+    <select id="selectMonth">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+        <option value=11>11</option>
+        <option value=12>12</option>
+    </select>
+    <button onclick="Check();">Check</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function Check() {
+            var month = parseInt(document.getElementById("selectMonth").value);
+            switch (month)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    document.getElementById("result").innerHTML = "Tháng " + month +" có 31 ngày";
+                    break;
+                case 2:
+                    document.getElementById("result").innerHTML = "Tháng " + month +" có 28 hoặc 29 ngày";
+                    break;
+                default:
+                    document.getElementById("result").innerHTML = "Tháng " + month +" có 30 ngày";
+            }
+        }
+
+    </script>
+</body>
+</html>
