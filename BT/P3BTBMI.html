@@ -6,43 +6,33 @@
     <title>BMI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    
 </head>
 <body>
-    <input type="text" id="weightInput">
-    <input type="text" id="heightInput">
+    <label>Weight(kg):</label><input type="text" id="weightInput">
+    <label>Height(m):</label><input type="text" id="heightInput">
     <button onclick="BMItest();">GO</button>
     <h3 id="resultArea"></h3>
         
     <script>
         function BMItest(){
-            var weight = parseInt(document.getElementById("weightInput").value);
-            var height = parseInt(document.getElementById("heightInput").value);
+            var weight = parseFloat(document.getElementById('weightInput').value);
+            var height = parseFloat(document.getElementById('heightInput').value);
 
-            var result = weight / height2;
+            var result = weight / (height*height);
             var bmiResult;
-            // if (result >= 30) {
-            //     bmiResult = 'Obese';
-            // } else if (result>=25) {
-            //     bmiResult = 'Overweight';
-            // } else if (result>=18.5) {
-            //     bmiResult = 'Normal';
-            // } else {
-            //     bmiResult = 'Underweight';
-            // }
-            if (result < 18)
-                document.write("Underweight");
-            else if (result < 25.0)
-                document.write("Normal");
-            else if (result < 30.0)
-                document.write("Overweight");
-            else
-                document.write("Obese");
+            if (result >= 30) {
+                bmiResult = 'Obese';
+            } else if (result>=25) {
+                bmiResult = 'Overweight';
+            } else if (result>=18.5) {
+                bmiResult = 'Normal';
+            } else {
+                bmiResult = 'Underweight';
+            }
 
-            document.getElementById("resultArea").innerHTML = "Result: "+bmiResult;
+            document.getElementById('resultArea').innerHTML = "Result: "+ result +" - "+ bmiResult;
         }
-
-
     </script>
 </body>
 </html>
