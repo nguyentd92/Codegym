@@ -20,14 +20,14 @@
             <td><input type="text" id="Amount"/></td>
             <td>
                 <select id="FromCur">
-                    <option value="23000">Vietnamdong</option>
-                    <option value="1">USD</option>
+                    <option value="1">Vietnamdong</option>
+                    <option value="23000">USD</option>
                 </select>
             </td>
             <td>
                 <select id="ToCur">
-                    <option value="1">USD</option>
-                    <option value="23000">Vietnamdong</option>
+                    <option value="23000">USD</option>
+                    <option value="1">Vietnamdong</option>
                 </select>
             </td>
             <td><button onclick="Convert();">Convert</button></td>
@@ -39,7 +39,7 @@
     <script>
         function Convert(){
             var amount = parseInt(document.getElementById("Amount").value);
-            var rate = document.getElementById("ToCur").value/document.getElementById("FromCur").value;
+            var rate = document.getElementById("FromCur").value/document.getElementById("ToCur").value;
             var result = amount*rate;
             document.getElementById("Result").innerHTML = "Result: " + result;
         }

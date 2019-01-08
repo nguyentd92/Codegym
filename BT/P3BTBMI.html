@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BMI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <input type="text" id="weightInput">
+    <input type="text" id="heightInput">
+    <button onclick="BMItest();">GO</button>
+    <h3 id="resultArea"></h3>
+        
+    <script>
+        function BMItest(){
+            var weight = parseInt(document.getElementById("weightInput").value);
+            var height = parseInt(document.getElementById("heightInput").value);
+
+            var result = weight / height2;
+            var bmiResult;
+            // if (result >= 30) {
+            //     bmiResult = 'Obese';
+            // } else if (result>=25) {
+            //     bmiResult = 'Overweight';
+            // } else if (result>=18.5) {
+            //     bmiResult = 'Normal';
+            // } else {
+            //     bmiResult = 'Underweight';
+            // }
+            if (result < 18)
+                document.write("Underweight");
+            else if (result < 25.0)
+                document.write("Normal");
+            else if (result < 30.0)
+                document.write("Overweight");
+            else
+                document.write("Obese");
+
+            document.getElementById("resultArea").innerHTML = "Result: "+bmiResult;
+        }
+
+
+    </script>
+</body>
+</html>
