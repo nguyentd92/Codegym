@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>May tinh don gian</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        div {
+           padding: 5px;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            margin: 2px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        input {
+            width: 220px;
+            height: 30px;
+            margin: 2px;
+            text-align: right;
+            font-size: 18px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="InputField" value="0"><br>
+        
+        <button id="btn_1" value="1" onclick="NumberClick(this.value)">1</button>
+        <button id="btn_2" value="2" onclick="NumberClick(this.value)">2</button>
+        <button id="btn_3" value="3" onclick="NumberClick(this.value)">3</button>
+        <button id="btn_plus" value="+" onclick="useroperator(this.value)">+</button><br>
+        <button id="btn_4" value="4" onclick="NumberClick(this.value)">4</button>
+        <button id="btn_5" value="5" onclick="NumberClick(this.value)">5</button>
+        <button id="btn_6" value="6" onclick="NumberClick(this.value)">6</button>
+        <button id="btn_sub" value="-" onclick="useroperator(this.value)">-</button><br>
+        <button id="btn_7" value="7" onclick="NumberClick(this.value)">7</button>
+        <button id="btn_8" value="8" onclick="NumberClick(this.value)">8</button>
+        <button id="btn_9" value="9" onclick="NumberClick(this.value)">9</button>
+        <button id="btn_multi" value="x" onclick="useroperator(this.value)">x</button><br>
+        <button id="btn_C" onclick="Erase()">C</button>
+        <button id="btn_0" value="0" onclick="NumberClick(this.value)">0</button>
+        <button id="btn_equal" value="=" onclick="useroperator(this.value)">=</button>
+        <button id="btn_over" value="/"onclick="useroperator(this.value)">/</button><br>
+    </div>
+    <script>
+        var oldValue=0;
+        var justEqual = true;
+        var oper;
+
+        function init() {
+            oldValue=0;
+            justEqual = true;
+            oper;
+        }        
+        
+        function NumberClick(num){
+            if (justEqual) {
+                justEqual = false;
+                document.getElementById("InputField").value = num;
+            }
+            else {
+                if (document.getElementById("InputField").value == 0) {
+                    document.getElementById("InputField").value = num;
+                }
+                else {
+                    document.getElementById("InputField").value += num;
+                }
+            }
+        }
+
+        function Erase(){
+            justEqual = true;
+            if (document.getElementById("InputField").value == 0) {
+                init();
+            }
+            else {
+                document.getElementById("InputField").value = 0;
+            }
+        }
+
+        function useroperator(value) {
+            if (!justEqual) {
+                document.getElementById("InputField").value = MakeCalc(oper);
+            justEqual = true;
+            oldValue = parseFloat(document.getElementById("InputField").value);
+            }
+            
+            oper = value;
+
+        }
+
+        function MakeCalc(oper){
+            if (oper !=0) {
+                switch (oper) {
+                    case "+": return oldValue+=parseFloat(document.getElementById("InputField").value);
+                    case "-": return oldValue-=parseFloat(document.getElementById("InputField").value);
+                    case "x": return oldValue*=parseFloat(document.getElementById("InputField").value);
+                    case "/": return oldValue/=parseFloat(document.getElementById("InputField").value);
+                    default: return document.getElementById("InputField").value;   
+                    }
+                }
+            }
+
+        
+    </script>
+
+</body>
+</html>
