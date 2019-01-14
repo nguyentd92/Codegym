@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <button id="btn_Play" onclick="PlayClick();">Play</button>
+    <script>
+        function PlayClick(){
+            var start = parseInt(prompt("Bat dau: ", ''));
+            var stop = parseInt(prompt("Ket thuc: ", ''));
+            var result = Math.floor(Math.random()*(stop-start) + start);
+            
+            var choice = parseInt(prompt("So cua ban: ",''));
+            while (choice !== result) {
+                if (choice > result) {
+                    choice = parseInt(prompt("So cua ban lon hon, chon lai: ",''));
+                }
+                else if (choice < result) {
+                    choice = parseInt(prompt("So cua ban be hon, chon lai: ",''));
+                }
+            }
+            alert("Chuc mung!");
+         
+        }
+       
+
+        
+    </script>
+</body>
+</html>
