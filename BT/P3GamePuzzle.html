@@ -12,8 +12,8 @@
     <img id='Cat2' onclick="Change(this.id)">
     <img id='Cat3' onclick="Change(this.id)">
     <img id='Cat4' onclick="Change(this.id)">
-    <img id='Cat5' onclick="Change(this.id)">
-    <input type="text" id="Test">
+    <img id='Cat5' onclick="Change(this.id)"><br>
+    <h2 id="Alert"></h2>
     <script>
         window.onload = init();
         function init() {
@@ -27,20 +27,23 @@
             Check();            
         }
 
-        function Check(){
-            var count = 0;
+        function Check() {
+            var count=0;
+            
             for (var i=1;i<=5;i++) {
-                if (document.getElementById("Cat"+i).src == "images/cat"+i+".jpg") {
+                // console.log((document.getElementById("Cat"+i).src).length);
+                // console.log((document.getElementById("Cat"+i).src).substr((document.getElementById("Cat"+i).src).length - 15,15));
+                if ((document.getElementById("Cat"+i).src).substr((document.getElementById("Cat"+i).src).length - 15,15) == "images/cat"+i+".jpg") {                    
                     count++;
-                }
-                else {
-                    break;
-                }
+                }                
             }
             if (count == 5) {
-                alert("Done");
+                document.getElementById("Alert").innerHTML = "DONE";
             }
-            document.getElementById("Test").value = count;
+            else {
+                document.getElementById("Alert").innerHTML = count;
+            }
+            
         }
     </script>
 </body>
