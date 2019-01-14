@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        img {
+            width: 50px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <input id="good" type="checkbox" onclick="GoodClick();" checked><label>GOOD</label><br>
+    <input id="fast" type="checkbox" onclick="FastClick();" checked><label>FAST</label><br>
+    <input id="cheap" type="checkbox" onclick="CheapClick();" checked><label>CHEAP</label>    
+
+    <script>
+        function GoodClick(){
+            if (document.getElementById("good").checked == true && document.getElementById("fast").checked == true) {
+                document.getElementById("cheap").checked = false;
+            }
+        }
+        function FastClick() {
+            if (document.getElementById("fast").checked == true && document.getElementById("cheap").checked == true) {
+                document.getElementById("good").checked = false;
+            }
+        }
+        function CheapClick() {
+            if (document.getElementById("cheap").checked == true && document.getElementById("good").checked == true) {
+                document.getElementById("fast").checked = false;
+            }
+        }
+
+        
+    </script>
+</body>
+</html>
