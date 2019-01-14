@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <img id='Cat1' onclick="Change(this.id)">
+    <img id='Cat2' onclick="Change(this.id)">
+    <img id='Cat3' onclick="Change(this.id)">
+    <img id='Cat4' onclick="Change(this.id)">
+    <img id='Cat5' onclick="Change(this.id)">
+    <input type="text" id="Test">
+    <script>
+        window.onload = init();
+        function init() {
+            for (var i=1;i<=5;i++) {
+                document.getElementById("Cat"+i).src= "images/cat"+(Math.floor(Math.random()*5+1)+".jpg");
+            }
+        }
+
+        function Change(id) {            
+            document.getElementById(id).src= "images/cat"+(Math.floor(Math.random()*5+1)+".jpg");
+            Check();            
+        }
+
+        function Check(){
+            var count = 0;
+            for (var i=1;i<=5;i++) {
+                if (document.getElementById("Cat"+i).src == "images/cat"+i+".jpg") {
+                    count++;
+                }
+                else {
+                    break;
+                }
+            }
+            if (count == 5) {
+                alert("Done");
+            }
+            document.getElementById("Test").value = count;
+        }
+    </script>
+</body>
+</html>
