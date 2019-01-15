@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <input type="text" id = 'InputBox'>
+    <button id = 'btnAdd' onclick="clickAdd()">Add</button>
+    <button id = 'btnDisplay' onclick="clickDisplay()">Display</button>
+    <br>
+    <p id = 'Show'></p>
+
+    <script>
+        var arrayNumber = [];
+
+        function clickAdd() {
+            arrayNumber.push(document.getElementById('InputBox').value);
+            document.getElementById('InputBox').value = "";
+        }
+
+        function clickDisplay() {
+            var text = '';
+            for (var i = 0; i < arrayNumber.length; i++) {
+                text += "Element " + i +" = " + arrayNumber[i] + '<br>';
+            }
+            document.getElementById('Show').innerHTML = text ;
+        }
+    </script>
+
+</body>
+</html>
