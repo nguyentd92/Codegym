@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <script>
+        var arrayNumber = [];
+        for (var i = 0; i< 10; i++) {
+            arrayNumber[i] = Math.round(Math.random()*100);
+        }
+
+        var numberV = parseInt(prompt(arrayNumber + ". Number V = "));
+        var checkIndex = arrayNumber.indexOf(numberV);
+        if (checkIndex !== -1) {
+            for (var i = checkIndex; i < arrayNumber.length; i++) {
+                if (i===arrayNumber.length-1) {
+                    arrayNumber.pop();
+                }
+                else {
+                    arrayNumber[i] = arrayNumber[i+1];
+                }
+            }
+            alert("Mang sau khi xoa V: " +arrayNumber);
+        }
+        else {
+            alert("V khong co trong mang");
+        }
+    </script>
+</body>
+</html>

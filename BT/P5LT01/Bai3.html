@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <script>
+        var arrayNumber = [];
+        var sum = 0;
+        for (var i = 0; i< 10; i++) {
+            arrayNumber[i] = Math.round(Math.random()*100);
+        }
+
+        var max = arrayNumber[0];
+        var index = 0;
+        for (var i = 1; i<arrayNumber.length; i++) {
+            sum+=arrayNumber[i];
+            if (arrayNumber[i]>max) {
+                max = arrayNumber[i];
+                index = i;
+            }            
+        }
+        var avg = sum / arrayNumber.length;
+        alert(arrayNumber);
+        alert("Average is "+avg);
+        alert("Max is "+max+" at position " + i);
+    </script>
+</body>
+</html>
