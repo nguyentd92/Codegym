@@ -12,14 +12,18 @@
     <button id = 'btnAdd' onclick="clickAdd()">Add</button>
     <button id = 'btnDisplay' onclick="clickDisplay()">Display</button>
     <br>
-    <p id = 'Show'></p>
+    <hr style="width: 260px; float: left"/>
+    <div id = 'Show'></div>
 
     <script>
         var arrayNumber = [];
+        var x = 0;
 
         function clickAdd() {
-            arrayNumber.push(document.getElementById('InputBox').value);
+            arrayNumber[x]=document.getElementById('InputBox').value;
             document.getElementById('InputBox').value = "";
+            alert("Element " + x + " = " + arrayNumber[x]);
+            x++;
         }
 
         function clickDisplay() {

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        p {
+            font-size: 25px;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Caro Game Simple</h2>
+    <p id="carogame"/>
+    <script>
+        var b = document.getElementById("carogame");
+        var board = [];
+        var data = "";
+        for (var i = 0; i < 5; i++) {
+            board[i] = new Array(0, 0, 0, 0, 0)
+        }
+
+        for (var i = 0; i < 5; i++) {
+            data += "<br/>";
+            for (var j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+
+        data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+        b.innerHTML = data;
+
+        function changeValue() {
+        var positionX = prompt("X: ");
+        var positionY = prompt("Y: ");
+        data = "";
+        board[positionX][positionY] = "x";
+        for(var i = 0; i < 5; i++) {
+            data += "<br/>";
+            for(var j = 0; j < 5; j++){
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+        b.innerHTML = data;
+        }
+    </script>
+</body>
+</html>
