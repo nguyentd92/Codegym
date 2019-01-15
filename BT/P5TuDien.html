@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tu dien</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <input type="text" id="InputText"/>
+    <input type="submit" onclick="translate()" value='Translate'/><br/>
+    <label id='ResultBox'></label>
+
+    <script>
+        var arrayEnglish = ["one","two","three","four","five"];
+        var arrayVietnamese = ["một","hai","ba","bốn","năm"];
+        var textBox = document.getElementById('InputText');
+
+        function translate() {
+            for (var i=0; i<arrayEnglish.length; i++) {
+                if (textBox.value === arrayEnglish[i]) {
+                    var result = arrayVietnamese[i];
+                    break;
+                }
+                else {
+                    result = "không tìm thấy";
+                }
+            }
+            document.getElementById('ResultBox').innerHTML = result;
+            console.log(result);
+            console.log(textBox.value);
+        }    
+
+        
+    </script>
+
+</body>
+</html>
