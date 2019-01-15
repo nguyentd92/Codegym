@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <script>
+        var str = prompt("Nhap vao chuoi:");
+        var arrayStr = [];
+
+        for (var i=0; i<str.length; i++) {
+            if (str[i] !== "-") {
+                arrayStr.push(str[i]);
+            }
+            else {
+                arrayStr.push("_");
+            }            
+        }
+        alert(arrayStr.join(''));
+
+        // for (var i=0; i<str.length; i++) {
+        //     if (str[i] !== "-") {
+        //         str[i] = "_"
+        //     }
+        // }
+
+        alert(str);
+
+        
+    </script>
+</body>
+</html>
