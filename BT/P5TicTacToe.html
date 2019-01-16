@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <style>
+        button {
+            height: 25px;
+            width: 25px;
+            margin: 2px;
+            
+        }
+    </style>
+
+</head>
+<body>
+    <h2>Caro Game Simple</h2>
+    <p id="carogame">
+    <script>
+        var b = document.getElementById("carogame");
+        var player = false;
+        const BOARDWIDTH = 9;
+        const BOARDHEIGHT = 9;
+        var board = [];
+        var data = '';
+            for (let i=0; i<BOARDHEIGHT; i++) {
+            data += '<br/>';
+            board[i]=new Array();
+
+            for (let j=0; j<BOARDWIDTH; j++) {
+                data += "<button id='"+i+"_"+j+"' onclick='mark(this.id)'>&nbsp;</button>";
+            }            
+        }
+        b.innerHTML = data;
+
+        function mark(id) {
+            var btn = document.getElementById(id);
+            var spaceIndex = id.indexOf('_');
+            console.log(spaceIndex);
+            
+            var positionX = parseInt(id.substr(0,spaceIndex));
+            var positionY = parseInt(id.substr(spaceIndex+1,id.length-spaceIndex));         
+            board[positionX][positionY] = player ? 'X' : 'O';
+            btn.innerText = board[positionX][positionY];
+            btn.disabled=true;
+            
+            checkWinner(positionX,positionY);
+            player = !player;
+            
+        }
+
+        function checkWinner(x,y) {
+            if (checkVertical(x,y) || checkHorizontal(x,y) || checkMainDiagonal(x,y) || checkPreDiagonal(x,y)) {
+                var winner = player ? "X" : "O";
+                alert(winner + " win!");
+            }
+        }
+
+        function checkVertical(x,y) {
+            let count = 0;
+            //Check up
+            for (let i = 0; ; i++) {
+                if (x-i<0) {
+                    break;
+                } else if (board[x-i][y] === board[x][y]) {
+                    count++;
+                } else {
+                    break;
+                };
+            }
+            //Check down
+            for (let i = 1; ; i++) {
+                if (x+i >=BOARDHEIGHT) {
+                    break;
+                } else if (board[x+i][y] === board[x][y]) {
+                    count++;
+                } else {
+                    break;
+                };
+            }
+            //Result
+            return count===5 ? true : false;
+        }
+
+        function checkHorizontal(x,y) {
+            let count = 0;
+            //Check left
+            for (let i = 0; ; i++) {
+                if (y-i<0) {
+                    break;
+                } else if (board[x][y-i] === board[x][y]) {
+                    count++;
+                } else {
+                    break;
+                }
+            }
+            //Check down
+            for (let i = 1; ; i++) {
+                if (y+i >BOARDWIDTH) {
+                    break;
+                } else if (board[x][y+i] === board[x][y]) {
+                    count++;
+                } else {
+                    break;
+                }
+            }
+            //Result
+            return count===5 ? true : false;
+        }
+
+        function checkMainDiagonal(x,y) {
+            let count=0;
+            //Check leftside
+            for (let i=0; ;i++) {
+                if (x-i<0 || y-i<0) {
+                    break;
+                } else if (board[x-i][y-i]===board[x][y]) {
+                    count++;
+                } else {
+                    break;
+                };
+            }
+
+            //Check rightside
+            for (let i=1; ;i++) {
+                if (x+i>=BOARDHEIGHT || y+i>=BOARDWIDTH) {
+                    break;
+                } else if (board[x+i][y+i]===board[x][y]) {
+                    count++;
+                } else {
+                    break;
+                };                           
+            }
+            return count === 5 ? true : false;
+        }
+
+        function checkPreDiagonal(x,y) {
+            let count=0;
+            //Check leftside
+            for (let i=0; ;i++) {
+                if (x+i>=BOARDHEIGHT|| y-i<0) {
+                    break;
+                } else if (board[x+i][y-i]===board[x][y]) {
+                    count++;
+                } else {
+                    break;
+                };
+            }
+
+            //Check rightside
+            for (let i=1; ;i++) {
+                if (x-i<0 || y+i>=BOARDWIDTH) {
+                    break;
+                } else if (board[x-i][y+i]===board[x][y]) {
+                    count++;
+                } else {
+                    break;
+                };                           
+            }
+            return count === 5 ? true : false;       
+        }
+
+    </script>
+</body>
+</html>
