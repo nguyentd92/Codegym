@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+
+</head>
+<body onload="Main()">
+    <script>
+        function Main() {
+            var str = prompt("Your string:");
+            var char = prompt("Your char: ");
+
+            alert("'"+char + "' appears "+checkAppear(str,char)+" times in "+str);
+        }
+
+        function checkAppear(s,c) {
+            var count = 0;
+            for (let i = 0; i<s.length;i++) {
+                if (s[i]===c) {
+                    count++;
+                } ;
+            }
+            return count > 0 ? count : -1;
+        }
+
+    </script>
+</body>
+</html>

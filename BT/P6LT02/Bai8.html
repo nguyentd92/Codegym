@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+
+</head>
+<body onload="Main()">
+    <script>
+        
+        function Main(){
+            var str = prompt("Your elements (a,b,..):");
+            var arrayNumber = str.split(',');
+            for (let i=0;i<arrayNumber.length;i++) {
+                arrayNumber[i] = parseInt(arrayNumber[i]);
+            }
+
+            alert(reverseArray(arrayNumber)); 
+        }
+
+        function reverseArray(array) {
+            let start=0;
+            let stop = array.length-1;
+            while (start < stop) {
+                let temp = array[start];
+                array[start] = array[stop];
+                array[stop] = temp;
+                start++;
+                stop--;
+            }
+            return array;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+
+</head>
+<body onload="Main()">
+    <script>
+        function Main() {
+            var character = prompt('Nhap 1 ki tu:');
+
+            alert(checkChar(character));            
+        }
+
+        function checkChar(char){
+            let numberChar='0123456789';
+            
+            if (numberChar.indexOf(char)!==-1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

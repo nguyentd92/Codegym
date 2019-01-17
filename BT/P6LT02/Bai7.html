@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+
+</head>
+<body onload="Main()">
+    <script>    
+        function Main() {
+            var a = parseInt(prompt("a"));
+            var b = parseInt(prompt('b'));
+
+            alert(swapPosition(a,b));
+            alert(a+" "+b)
+        }
+
+        function swapPosition(a,b) {
+            let temp = a;
+            a = b;
+            b = temp;
+            return ''+a+" "+b;
+        }
+        
+    </script>
+</body>
+</html>
