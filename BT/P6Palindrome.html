@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+</head>
+<body onload="Main()">
+    <script>
+        function Main() {
+            var str = prompt('Your string:');
+            arrayStr = str.split('');
+            alert(isPalindrome(arrayStr));
+        }
+        function isPalindrome (array) {
+            if (array.length<=1) {
+                return true;
+            } else if (array[0]===array[array.length-1]) {
+                array.pop();
+                array.shift();
+                return isPalindrome(array);
+            } else {
+               return false;
+            };
+        }
+    </script>
+</body>
+</html>
