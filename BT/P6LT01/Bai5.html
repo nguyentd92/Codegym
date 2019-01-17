@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body onload="checkConstel()">
+    <script>
+
+
+        function checkConstel() {
+            var name = prompt("Type your Star:");
+            var str1 = "Polaris, Aldebaran, Deneb, Vega, Altair, Dubhe, Regulus";
+            var str2 = "Ursa Minor, Tarurus, Cygnus, Lyra, Aquila, Ursa Major, Leo";
+
+            var starName = str1.split(', ');
+            var starConstel = str2.split(', ');
+            var result = 'No Result';
+            for (let i=0;i<starName.length;i++) {
+                if (name===starName[i]) {
+                    result = starConstel[i];
+                }
+            } 
+            alert(result);
+        }
+
+
+    </script>
+</body>
+</html>

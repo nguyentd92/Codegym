@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <h3>Nhập vào a, b (cách nhau dấu ','):</h3>
+    <input type="text" id='inputField' placeholder="a,b"/>
+    <input type="submit" onclick = "compare()" value='COMPARE'/>
+    <script>
+        function compare() {
+            let inputField = document.getElementById('inputField');
+            let str = document.getElementById('inputField').value;
+            let x = parseFloat(str.substr(0,inputField.value.indexOf(',')+1));
+            let y = parseFloat(str.substr(inputField.value.indexOf(',')+1,str.length));
+            inputField.value=compare2Num(x,y);
+            function compare2Num(a,b) {
+                if (a>b) {
+                    alert(a + " is bigger than "+b);
+                    return '';
+                }
+                else {
+                    return a+b;
+                }
+                
+            }
+            console.log(x+ " " + y);
+        }    
+
+    </script>
+</body>
+</html>
