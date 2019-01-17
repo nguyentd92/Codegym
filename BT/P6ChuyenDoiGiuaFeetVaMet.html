@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+    <h2 id="headText">Feet To Meter</h2>
+    <input type="text" id="inputField" placeholder="FeetToMeter" oninput="convert(this.id)"/>
+    <input id="change" type="submit" onclick="changeMode()" value="ChangeMode"/>
+    <input id="outputField" disabled=true/>
+
+
+
+
+    <script>
+        const rateMofF = 0.305;
+
+        function changeMode() {
+            let inputField = document.getElementById("inputField");
+            let headText = document.getElementById("headText");
+            inputField.placeholder = inputField.placeholder==="FeetToMeter" ? "MeterToFeet" : "FeetToMeter";
+            if (inputField.placeholder !== "FeetToMeter") {
+                headText.innerHTML = "Meter To Feet";
+            } else {
+                headText.innerHTML = "Feet To Meter";
+            }
+            
+        }
+
+        function convert(id) {
+            let result;
+            let inputField = document.getElementById(id);
+            let outputField = document.getElementById("outputField");
+            switch (inputField.placeholder) {
+                case "FeetToMeter":
+                    result = footToMeter(inputField.value);
+                    break;
+                case "MeterToFeet":
+                    result = meterToFoot(inputField.value);
+                    break;
+                default:
+            }            
+            console.log(result);
+            console.log(inputField.placeholder);
+            console.log(outputField.innerHTML);
+
+            outputField.value = result;
+
+
+        }
+
+        function footToMeter(foot) {
+            return foot * rateMofF;
+        }
+
+        function meterToFoot(meter) {
+            return meter / rateMofF;
+        }
+    </script>        
+</body>
+</html>
