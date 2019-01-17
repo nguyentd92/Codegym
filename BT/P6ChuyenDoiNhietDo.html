@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <p>
+        <label id="inputLabel"></label>
+        <input id="inputFahrenheit" type="number" placeholder=""
+        oninput="temperatureConverter(this.value)"
+        onchange="temperatureConverter(this.value)">
+        <button id="ChangeMode" onclick="changeMode()">Change Mode</button>
+    </p>
+    <p><label id="outputLabel"></label><span id="outputField"></span></p>
+
+    <script>
+        window.onload = init();
+        var Mode = true;
+
+        function temperatureConverter(valNum) {
+            valNum = parseFloat(valNum);
+            if (Mode===true) {
+                document.getElementById("outputField").innerHTML = (valNum-32) / 1.8;
+            } else {
+                document.getElementById("outputField").innerHTML = valNum*1.8 + 32;
+            };            
+        }
+
+        function changeMode() {
+            Mode = !Mode;
+            init();
+        }
+        function init() {
+            var inputField = document.getElementById("inputFahrenheit");
+            var outputLabel = document.getElementById("outputLabel");
+            var inputLabel = document.getElementById("inputLabel");
+            if (Mode) {
+                inputField.placeholder = "Fahrenheit";
+                inputLabel.innerHTML = "Fahrenheit: ";
+                outputLabel.innerHTML = "Celsius:";
+               
+
+            } else {
+                inputField.placeholder = "Celsius";
+                inputLabel.innerHTML = "Celsius: ";
+                outputLabel.innerHTML = "Fahrenheit: ";
+            };
+        }
+    </script>
+
+</body>
+
+</html>
