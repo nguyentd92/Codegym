@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <script>
+        // var array = [['Danh','Thang','Khanh','Vien','Huan'],
+        //                         [3,5,4,2,3]];
+        // for (let j = 0; j <array[1].length; j++ ){
+        //     for (let i = 0; i < array[1].length-1; i++) {
+        //     if (array[1][i] > array[1][i+1]) {
+        //         //Swap Mark
+        //         var temp1 = array[1][i];
+        //         array[1][i] = array[1][i+1];
+        //         array[1][i+1]=temp1;
+
+        //         //Swap Name
+        //         var temp2 = array[0][i];
+        //         array[0][i] = array[0][i+1];
+        //         array[0][i+1]= temp2;
+        //         }
+        //     }
+        // }
+        // console.log(array);
+
+        var student = [['Danh',3],['Huan',6],['Khanh',5],['Vien',8],['Thang',7]];
+
+        for (let i = 1; i < student.length; i++) {
+            for (let j = 0; j < student.length-i; j++) {
+                if (student[j][1] > student[j+1][1]) {
+                    let temp = student[j];
+                    student[j] = student[j+1];
+                    student[j+1] = temp;
+                }
+            }
+        }
+        document.write(student);
+
+    </script>
+</body>
+</html>
