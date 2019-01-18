@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+</head>
+<body onload=Main()>
+    <script>
+        function Main() {
+            var array1=[3, 5, 1, 8, -3, 7, 8];
+            var array2=[7, 12, 6, 9, 20, 56, 89];
+            var array3=[];
+            var array4=[0, 0, 0, 0, 0, 0];
+
+            alert(checkMinEle(array1));
+            alert(checkMinEle(array2));
+            alert(checkMinEle(array3));
+            alert(checkMinEle(array4));
+
+        }
+
+        function checkMinEle(array) {
+            let min = null;
+            for (let i=0;i<array.length;i++) {
+                if (min===null || min > array[i]) {
+                    min = array[i];
+                };                
+            };
+            if (min===null) {
+                return "Array is empty";
+            } else {
+                return "Minimum value is "+min;
+            }
+            
+        }
+    </script>
+</body>
+</html>
