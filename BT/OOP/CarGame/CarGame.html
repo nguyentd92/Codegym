@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bai tap Game lai xe</title>
+    <style>
+        canvas{
+            border: solid 3px #000;
+        }
+    </style>
+</head>
+<body onkeydown="gameBoard.moveCar(event)">
+    <canvas id="gameCanvas" width="1366px" height="700px"></canvas>
+    <script>
+        const GAMEBOARD_WIDTH = 1366;
+        const GAMEBOARD_HEIGHT = 700;
+        const GAMEBOARD_BARRIER = 3;
+        const GAMEBOARD_GOLD = 3;
+        const GAME_GOLD_POINT = 100;
+
+        const ORIENTATION_LEFT = "left";
+        const ORIENTATION_RIGHT = "right";
+        const ORIENTATION_UP = "up";
+        const ORIENTATION_DOWN = "down";
+
+        const CAR_WIDTH = 50;
+        const CAR_HEIGHT = 101;
+
+        const DEFAULT_CAR_X_POSITION = 630;
+        const DEFAULT_CAR_Y_POSITION = 600;
+        const DEFAULT_CAR_ORIENTATION = ORIENTATION_DOWN;
+        const DEFAULT_CAR_SPEED = 20;
+
+        class Gold {
+            constructor(){
+                this.xPosition = Math.random()*GAMEBOARD_WIDTH;
+                this.yPosition = Math.random()*GAMEBOARD_HEIGHT;
+            }
+
+            show(ctx){
+                var image = new Image();
+                var xPosition = this.xPosition;
+                var yPosition = this.yPosition
+                image.src = 'gold.jpg';
+                image.onload = function (){
+                    ctx.drawImage(image, xPosition, yPosition);
+                }
+            }
+
+            renew(){
+                this.xPosition = Math.random()*GAMEBOARD_WIDTH;
+                this.yPosition = Math.random()*GAMEBOARD_HEIGHT;
+            }
+        }
+        class Barrier {
+            constructor(){
+                this.xPosition = Math.random()*GAMEBOARD_WIDTH;
+                this.yPosition = Math.random()*GAMEBOARD_HEIGHT;
+            }
+
+            show(ctx){
+                var image = new Image();
+                var xPosition = this.xPosition;
+                var yPosition = this.yPosition
+                image.src = 'barrier.png';
+                image.onload = function (){
+                    ctx.drawImage(image, xPosition, yPosition);
+                }
+            }
+        }
+
+        class Car {
+            constructor(){
+                this.xPosition = DEFAULT_CAR_X_POSITION;
+                this.yPosition = DEFAULT_CAR_Y_POSITION;
+                this.orientation = ORIENTATION_UP;
+                this.speed = DEFAULT_CAR_SPEED; 
+                this.image;    
+            }
+
+            buildImage(){
+                this.image = this.orientation + '.png';
+            };
+
+            
+
+
+            move(x){
+                switch (this.orientation) {
+                    case ORIENTATION_DOWN:
+                        this.yPosition += this.speed*x;
+                        break;
+                    case ORIENTATION_UP:
+                        this.yPosition -= this.speed*x;
+                        break;
+                    case ORIENTATION_LEFT:
+                        this.xPosition -= this.speed*x;
+                        break;
+                    case ORIENTATION_RIGHT:
+                        this.xPosition += this.speed*x;
+                        break;
+                }
+
+                this.buildImage();
+            }
+
+            show(ctx){
+                var image = new Image();
+                var xPosition = this.xPosition;
+                var yPosition = this.yPosition;
+                image.src = this.image;
+                image.onload = function(){
+                    ctx.drawImage(image, xPosition, yPosition,);
+                }
+                
+            }
+        }
+
+        class GamePoint {
+            constructor() {
+                this.point = 0;
+            }
+
+            increasePoint(value) {
+                this.point+=value;
+            }
+
+            show(ctx){
+                ctx.font= "30px Arial";
+                ctx.fillText("Score: "+this.point, 10, 50);
+            }
+        }
+
+        class GameBoard {
+            constructor(){
+                this.point = new GamePoint();
+                this.car = new Car();
+                this.barriers = [];
+                for (let i = 0; i < GAMEBOARD_BARRIER; i++) {
+                    this.barriers[i] = new Barrier();
+                }
+                this.gold = [];
+                for (let i = 0; i < GAMEBOARD_GOLD; i++) {
+                    this.gold[i] = new Gold();
+                }
+                this.ctx = undefined;                
+            }
+
+            start() {
+                this.ctx = document.getElementById('gameCanvas').getContext('2d');
+                this.car.buildImage();
+                this.car.show(this.ctx);
+                for (let i = 0; i < 3 ; i++) {
+                    this.barriers[i].show(this.ctx);
+                };
+
+                for (let i = 0; i < GAMEBOARD_GOLD; i++) {
+                    this.gold[i].show(this.ctx);
+                }
+                this.gold.show(this.ctx);
+                
+            };
+
+            render(){
+                this.ctx.clearRect(0, 0, GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
+                this.car.show(this.ctx);
+                
+                for (let i = 0; i < 3 ; i++) {
+                    this.barriers[i].show(this.ctx);
+                };
+                for (let i = 0; i < GAMEBOARD_GOLD; i++) {
+                    this.gold[i].show(this.ctx);
+                }
+                
+                this.checkPoint();
+                this.point.show(this.ctx);
+                this.checkBarrier();
+            }
+
+            checkBarrier(){
+                for (let i = 0; i < GAMEBOARD_BARRIER; i++) {
+                    let xcar = Math.round(this.car.xPosition/CAR_WIDTH);
+                    let ycar = Math.round(this.car.yPosition/CAR_WIDTH);
+
+                    let xbarrier = Math.round(this.barriers[i].xPosition/CAR_WIDTH);
+                    let ybarrier = Math.round(this.barriers[i].yPosition/CAR_WIDTH);
+
+                    if (xcar >= xbarrier && xcar <= xbarrier+2 && ycar >= ybarrier && ycar<=ybarrier+2) {
+                        this.endGame();
+                    }
+                }
+            }
+
+            checkPoint(){
+
+                for (let i = 0; i < GAMEBOARD_GOLD; i++) {
+                    if (Math.round(this.car.xPosition/CAR_WIDTH) === Math.round(this.gold[i].xPosition/CAR_WIDTH) && Math.round(this.car.yPosition/CAR_WIDTH)===Math.round(this.gold[i].yPosition/CAR_WIDTH)) {
+                        this.gold[i].renew();
+                        this.point.increasePoint(GAME_GOLD_POINT);  
+                    }
+                }
+            }
+
+            endGame() {
+                alert("Game Over! Your score is " + this.point.point);
+            }
+
+            moveCar(event) {
+                var orientation;
+                var speed;
+                switch (event.which) {
+                    case 37:
+                        orientation = ORIENTATION_LEFT;
+                        break;
+                    case 38:
+                        orientation = ORIENTATION_UP;
+                        break;
+                    case 39:
+                        orientation = ORIENTATION_RIGHT;
+                        break;
+                    case 40:
+                        orientation = ORIENTATION_DOWN;
+                        break;                        
+                }
+
+                if (orientation) {
+                    if (this.car.orientation !== orientation) {
+                        this.car.orientation = orientation;
+                    } else if (speed > DEFAULT_CAR_SPEED){
+                        this.car.move(10);
+                    } else {
+                        this.car.move(1);
+                    }
+                    this.render();
+                }
+            }
+        }
+
+        
+        var gameBoard = new GameBoard();
+        gameBoard.start();
+    
+    </script>
+</body>
+</html>

@@ -9,23 +9,25 @@
 <body onload="Main()">
     <canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
     <script>
-        var Rectangle = function () {
-            var height;
-            var width;
+        class Rectangle {
+            constructor(height, weight) {
+                this.height = height;
+                this.weight = weight;
+            }
 
-            this.setRect = function(width, height){
+            setRect(width, height){
                 this.height = height;
                 this.width = width;
             }
-            this.getPerimeter = function(){
+            getPerimeter(){
                 return (this.height+this.width)*2;
             }
 
-            this.getArea = function(){
+            getArea(){
                 return this.height*this.width;
             }
 
-            this.showRec = function() {
+            showRec() {
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
 

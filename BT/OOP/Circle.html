@@ -8,15 +8,18 @@
 </head>
 <body onload="Main()">
     <script>
-        var Circle = function(radius){
-            this.radius = parseInt(radius);
-            this.color;
+        class Circle{
+            constructor(radius){
+                this.radius = parseInt(radius);
+                this.color;
+            }
 
-            this.getRadius = function(){
+
+            getRadius(){
                 return radius;
             };
 
-            this.getArea = function() {
+            getArea() {
                 return Math.PI*radius*radius;
             }
         };

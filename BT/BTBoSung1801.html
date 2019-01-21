@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+</head>
+<body>
+    <form name="f">
+        <input name="soluong" type="text" /><br/>
+        <input name="loaihang" id="loaihang" type="radio" value="500" checked/>
+        <label>Bánh chưng</label>
+        <input name="loaihang" id="loaihang" type="radio" value="1000"/>
+        <label>Thuốc lá</label><br/>
+        <button onclick="tinhTien()">Tính Tiền</button>
+        <p id="hoadon"></p>
+
+
+    </form>
+
+    <script>
+        var loaiHang; 
+        var soLuong; 
+        var dongia;
+        function tinhTien() {
+            dongia = document.getElementById("loaihang").value;
+            soLuong = parseInt(document.f.soluong.value);
+            alert(tinhHoaDon(soLuong,dongia));
+
+        }        
+
+        function tinhHoaDon(sl,dg) {
+            let thanhtien = sl*dg;
+            console.log(thanhtien);
+            console.log(chietKhau(sl));  
+            console.log(dg)         ;      
+            return thanhtien*(1-chietKhau(sl));
+        }
+
+        function chietKhau(sl) {
+            switch (sl) {
+                case 0:
+                case 1:
+                    return 0;
+                case 2:
+                    return 2/100;
+                case 3:
+                    return 3/100;
+                default:
+                    return 4/100;
+            }
+        }
+    </script>
+</body>
+</html>

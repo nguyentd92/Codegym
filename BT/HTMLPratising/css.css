@@ -1,0 +1,25 @@
+header, footer {
+    background-color: red;
+    height: 150px;
+}
+nav {
+    height: 30px;
+    background-color: blue;
+}
+section {
+    height: 200px;
+    width: 400px;
+    background-color: pink;
+    float: left;
+}
+article {
+    height: 200px;
+    width: 400px;
+    background-color: grey;
+    float: left;
+}
+aside {
+    height: 400px;
+    background-color: black;
+    
+}

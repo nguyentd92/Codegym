@@ -8,14 +8,18 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
-<body>
+<body onload="Main()">
     <script>
-        var strPrime = '';
-        for (let number = 0; number < 10000; number++) {
-            if (isPrime(number)) {
-                strPrime += number + " ";
+        function Main(){
+            var strPrime = '';
+            for (let number = 0; number < 10000; number++) {
+                if (isPrime(number)) {
+                    strPrime += number + " ";
+                }
             }
+            document.write(strPrime);
         }
+
         function isPrime(num) {
             if (num === 1 || num === 0) {
                 return false;
@@ -29,7 +33,7 @@
             };
             return check;
         }
-        document.write(strPrime);
+
     </script>
 </body>
 </html>
