@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="Main()">
+    <script>
+        var Mobile = function() {
+            this.capacity;
+            this.texttyping = [];
+            this.inbox = [];
+            this.sent = [];
+            this.isOn = false;
+            this.sms;
+
+            this.setCapacity = function(value) {
+                this.capacity = value;
+            }
+
+            this.checkState = function() {
+                alert(this.isOn);
+            }
+
+            this.turnOnOff = function(){
+                if (this.isOn) {
+                    this.isOn = false;
+                } else {
+                    this.isOn = true;
+                }
+            }
+
+            this.charge = function() {
+                this.capacity = this.capacity <=90 ? this.capacity + 10 : 100;
+            }
+
+            this.typeSMS = function() {}
+
+            this.receiveSMS = function(sms) {
+                if (this.isOn) {
+                    alert(sms);
+                    this.inbox.push(sms);
+                    this.energyWaste();
+                }
+
+            }
+
+            this.sendSMS = function(phone, text){
+                if (this.isOn) {
+                    this.sent.push(text);
+                    phone.receiveSMS(text);
+                    this.energyWaste();
+                }
+
+            }
+
+            this.showInbox = function() {
+                if (this.isOn) {
+                    alert(this.inbox);
+                    this.energyWaste();
+                }
+            }
+
+            this.showSentbox = function() {
+                if (this.isOn) {
+                    this.screen.value = this.sent;
+                    this.energyWaste();
+                }
+            }
+
+            this.energyWaste = function() {
+                this.capacity--;
+            }
+
+            this.showMessage = function () {
+                if (this.isOn) {
+                    alert(inbox[inbox.length-1]);
+                    this.energyWaste();
+                }
+            }
+        }
+
+        function Main() {
+            var nokia = new Mobile();
+            var iphone = new Mobile();
+            nokia.turnOnOff();
+            iphone.turnOnOff();
+            nokia.sendSMS(iphone, "text");
+            console.log("Iphone inbox: " + iphone.inbox);
+            
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="Main()">
+    <script>
+        var Temperature = function() {
+            var temp;
+            this.setValue = function(temp) {
+                this.temp = temp;
+            }
+            this.convertCtoF = function(){
+                return this.temp*1.8+32;
+            }
+            this.convertCtoK = function(){
+                return this.temp+274;
+            }
+        }
+
+        function Main(){
+            var todayTemp = new Temperature()    ;
+            todayTemp.setValue(24);
+
+            console.log(todayTemp.convertCtoF());
+            console.log(todayTemp.convertCtoK());
+        }
+    </script>
+</body>
+</html>
