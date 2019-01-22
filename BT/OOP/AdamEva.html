@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Apple {
+            constructor() {
+                this.weight = 10;
+            }
+
+            decrease() {
+                this.weight --;
+            }
+
+            isEmpty() {
+                return this.weight === 0 ? true : false;
+            }
+
+            getWeight() {
+                return this.weight;
+            }
+        }
+
+        class Human {
+            constructor(name, gender, weight){
+                this.name;
+                this.gender;
+                this.weight;
+            }
+
+            isMale(){
+                return this.gender;
+            }
+
+            setGender(gender) {
+                this.gender = gender;
+            }
+
+            checkApple(apple) {
+                return apple.isEmpty();
+            }
+
+            eat(apple) {
+                apple.decrease();
+                console.log("eat apple");
+            }
+
+            say(string){
+                alert(this.name+": "+string);
+            };
+            getName() {
+                return this.name;
+            }
+
+            setName(name) {
+                this.name=name;
+            }
+
+            getWeight() {
+                return this.weight;
+            }
+
+            setWeight(value) {
+                this.weight = value;
+            }
+        }
+    
+        var apple = new Apple();
+        var Adam = new Human(Adam, true, 80);
+        var Eva = new Human(Eva, false, 55);
+        while (true) {
+            if (Adam.checkApple(apple)){
+                Adam.eat(apple);
+            } else {
+                Adam.say("No more to eat");
+                break;
+            };
+            if (Eva.checkApple(apple)) {
+                Eva.eat(apple);
+            } else {
+                Eva.say("No more to eat");
+                break;
+            };
+        }
+
+    </script>
+</body>
+</html>

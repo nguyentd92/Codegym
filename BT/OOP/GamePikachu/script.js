@@ -1,6 +1,6 @@
 /**
  * Created by nhatnk on 4/26/17.
- * Developed by DanhNguyen Codegym 18/01/2019
+ * Edit: DanhNguyen Codegym 18/01/2019
  */
     function docReady(){
         window.addEventListener('keydown', moveSelection);
@@ -28,6 +28,7 @@
     }
 
     function Hero(image, top, left, size){
+        this.speed = 20;
         this.image = image;
         this.top = top;
         this.left = left;
@@ -41,16 +42,16 @@
             ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
         }
         this.moveRight = function(){
-        this.left += 20;
+        this.left += this.speed;
         }
         this.moveLeft = function(){
-            this.left-= 20;    
+            this.left-= this.speed;    
         }
         this.moveUp = function() {
-            this.top-=20;
+            this.top-=this.speed;
         }
         this.moveDown = function() {
-            this.top+=20;
+            this.top+=this.speed;
         }
     }
   
