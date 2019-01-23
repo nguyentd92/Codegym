@@ -16,8 +16,8 @@
     <script>
         const GAMEBOARD_WIDTH = 1366;
         const GAMEBOARD_HEIGHT = 700;
-        const GAMEBOARD_BARRIER = 3;
-        const GAMEBOARD_GOLD = 3;
+        const GAMEBOARD_BARRIER = 10;
+        const GAMEBOARD_GOLD = 10;
         const GAME_GOLD_POINT = 100;
 
         const ORIENTATION_LEFT = "left";
@@ -152,7 +152,7 @@
                 this.ctx = document.getElementById('gameCanvas').getContext('2d');
                 this.car.buildImage();
                 this.car.show(this.ctx);
-                for (let i = 0; i < 3 ; i++) {
+                for (let i = 0; i < GAMEBOARD_BARRIER ; i++) {
                     this.barriers[i].show(this.ctx);
                 };
 
@@ -167,7 +167,7 @@
                 this.ctx.clearRect(0, 0, GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
                 this.car.show(this.ctx);
                 
-                for (let i = 0; i < 3 ; i++) {
+                for (let i = 0; i < GAMEBOARD_BARRIER ; i++) {
                     this.barriers[i].show(this.ctx);
                 };
                 for (let i = 0; i < GAMEBOARD_GOLD; i++) {

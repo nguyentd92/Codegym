@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+</head>
+<body>
+    <script>
+        class Remote {
+            constructor() {
+                this.id;
+                this.tv;
+            }
+
+            changeState() {
+                this.tv.switchOnOff();
+            }
+
+            connectTV(tv) {
+                this.tv = tv;
+            }
+
+            changeChannel(channel){
+                this.tv.changeChannel(channel);
+            }
+
+            changeVolume(state){
+                this.tv.changeVolume(state);
+            }
+        }
+        class Television {
+            constructor () {
+                this.channel;
+                this.volume=10;
+                this.state = false;
+            }
+
+            switchOnOff(){
+                this.state = !this.state;
+            }
+
+            changeChannel(channel) {
+                this.channel = channel;
+            }
+
+            changeVolume(state) {
+                switch (state) {
+                    case "up":
+                        this.volume++;
+                        break;
+                    case "down":
+                        this.volume--;
+                        break;
+                }
+            }
+        }
+
+        var tv = new Television();
+        var remote = new Remote();
+
+        remote.connectTV(tv);
+
+        tv.switchOnOff();
+        tv.changeChannel(7);
+        console.log(tv.channel);
+
+        remote.changeChannel(3);
+        
+        console.log(tv.channel);
+        console.log(tv.volume);
+        remote.changeVolume("up");        
+        remote.changeVolume("up");
+        console.log(tv.volume);
+        remote.changeState();
+        
+    </script>
+</body>
+</html>

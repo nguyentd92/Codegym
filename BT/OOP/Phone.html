@@ -26,10 +26,10 @@
         }
     </style>
 </head>
-<body onload="Main()">
+<body>
     <div name="Nokia">
         <label>NOKIA</label><br>
-        <textarea id='nokia_screen'></textarea><br>
+        <textarea name="nokia" id='nokia_screen' onchange = "saveDraft(this.name)"></textarea><br>
         <button name="nokia" onclick="btn_checkState(this.name)">Check</button>
         <button name="nokia" onclick="btn_turnState(this.name)">ON/OFF</button>
         <button name="nokia" onclick="btn_charge(this.name)">Charge</button><br/>
@@ -37,10 +37,11 @@
         <button name="nokia" onclick="btn_sentbox(this.name)">SENT</button>
         <button name="nokia" onclick="btn_sendSMS(this.name)">SENDSMS</button><br/>
         <button name="nokia" onclick="btn_inbox(this.name)">INBOX</button>
+        <button name="nokia" onclick="btn_showDraft(this.name)">DRAFT</button>
     </div>
     <div name="Iphone">
         <label>IPHONE</label><br>
-        <textarea id='iphone_screen'></textarea><br>
+        <textarea name="nokia" id='iphone_screen' onchange="saveDraft(this.name)"></textarea><br>
         <button name="iphone" onclick="btn_checkState(this.name)">Check</button>
         <button name="iphone" onclick="btn_turnState(this.name)">ON/OFF</button>
         <button name="iphone" onclick="btn_charge(this.name)">Charge</button><br/>
@@ -48,6 +49,7 @@
         <button name="iphone" onclick="btn_sentbox(this.name)">SENT</button>
         <button name="iphone" onclick="btn_sendSMS(this.name)">SENDSMS</button><br/>
         <button name="iphone" onclick="btn_inbox(this.name)">INBOX</button>
+        <button name="iphone" onclick="btn_showDraft(this.name)">DRAFT</button>
     </div>
     <script>
         class Mobile {
@@ -59,9 +61,11 @@
                 this.sent = [];                
                 this.isOn = true;
                 this.screen = screen;
+                this.draft;
             }
 
             isStatus(){
+                this.screen.value ='';
                 this.screen.placeholder = this.isOn ? "State On" : "State Off";
                 this.capacity--;
             }
@@ -127,6 +131,19 @@
                     this.screen.placeholder = "INBOX: "+this.inboxsms;
                     this.capacity--;
                 };
+            }
+
+            saveDraft() {
+                if (this.screen.value.length !== 0) {                    
+                    this.draft = this.screen.value;
+                }
+                console.log(this.draft);
+            }
+
+            showDraft() {
+                if (this.isOn) {
+                    this.screen.value = this.draft;
+                }
             }
         }
 
@@ -209,6 +226,28 @@
                     break;
                 case "iphone":
                     iphone.inbox();
+                    break;
+            }
+        }
+
+        function saveDraft(name) {
+            switch (name) {
+                case "nokia":
+                    nokia.saveDraft();
+                    break;
+                case "iphone":
+                    iphone.saveDraft();
+                    break;
+            }
+        }
+
+        function btn_showDraft(name) {
+            switch (name) {
+                case "nokia":
+                    nokia.showDraft();
+                    break;
+                case "iphone":
+                    iphone.showDraft();
                     break;
             }
         }
