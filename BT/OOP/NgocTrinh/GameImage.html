@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            background-image: url('background.jpg');
+        }
+    </style>
+</head>
+<body>
+    <canvas onclick="gameBoard.mouseClick(event)" id="gameCanvas" width="1270px" height="630px" style="border:1px solid #d3d3d3; background-image: 'pool.jpg'">
+
+    </canvas>
+
+    <script>
+        var MARGIN_LEFT = 40;
+        var MARGIN_TOP = 30;
+        var CARD_WIDTH = 183;
+        var CARD_HEIGHT = 275;
+        var PADDING = 20;
+        var AMOUNT_PAIR = 6;
+        var ROWS_OF_CARD = 2;
+        var IMAGE_CLOSED = 'close.jpg';
+
+        class Card {
+            constructor(hiddenImage, x, y) {
+                this.xPos = x;
+                this.yPos = y;
+                this.isOpen = false;                
+                this.hiddenImage = hiddenImage;
+                this.closeImage = IMAGE_CLOSED;
+                this.image = this.closeImage;
+            }
+            
+            setRight() {
+                this.isOpen = true;
+            }
+            
+            closeImg() {
+                if (!this.isOpen) {
+                    this.image = this.closeImage;
+                }
+            }
+
+            openImg() {
+                this.image = this.hiddenImage;
+            }
+
+            show(ctx){
+                var image = new Image();
+                let xPos = this.xPos;
+                let yPos = this.yPos;
+                image.src = this.image;
+                image.onload = function (){
+                    ctx.drawImage(image, xPos, yPos); 
+                }
+            }
+        }
+
+        class GameBoard {
+            constructor(amountPair, ctx) {
+                this.amountPair = amountPair;
+                this.ctx = ctx;
+                this.card = [];
+                this.checkFirstClick = true;
+                this.correctPairs;
+            }
+
+            gameStart() {
+                this.correctPairs = 0;
+                // Lấy địa chỉ ảnh không trùng nhau
+                var existedValue = [];
+                var id;
+                for (let j = 0; j < ROWS_OF_CARD; j++) {
+                    this.card[j]=[];
+                    for (let i = 0;i < this.amountPair; i++) {
+                        //set Position
+                        var x = CARD_WIDTH*i + PADDING*i + MARGIN_LEFT;
+                        var y = MARGIN_TOP + CARD_HEIGHT*j + PADDING*j;
+                        //set Random ID and Image
+                        do {
+                            id = Math.floor(Math.random()*this.amountPair);
+                        } while (existedValue.indexOf(id)!==-1);
+                        
+                        existedValue.push(id);
+                        let openImg = ''+id+'.jpg';
+                        //Initialize
+                        this.card[j][i] = new Card(openImg, x, y);
+                    }
+
+                    existedValue = [];                    
+                }
+
+                this.render();
+
+            }
+
+            render() {                
+                for (let j = 0; j < ROWS_OF_CARD; j++) {
+                    for (let i = 0; i < this.amountPair; i++) {
+                        this.card[j][i].show(this.ctx);
+                    }
+                }
+            }
+
+            openCard(row,col) {
+                this.card[row][col].openImg();
+            }
+
+            mouseClick(e){
+                // Lấy tọa độ cursor
+                let x = e.pageX;
+                let y = e.pageY;
+
+                // Lấy chỉ số hàng rowIndex và cột colIndex khi click vào Card                
+                let rowIndex = Math.floor((y - MARGIN_TOP) / (CARD_HEIGHT + PADDING));
+                let colIndex = Math.floor((x - MARGIN_LEFT) / (CARD_WIDTH + PADDING));
+                let card = this.card[rowIndex][colIndex];
+                // Mở hình
+                this.openCard(rowIndex, colIndex);
+                this.render();
+                // So hình, nếu click hình đầu thì thêm hình vào so sánh
+                // nếu click hình thứ hai thì so sánh hình thứ 2 với hình đầu, giống thì giữ hình, không giống thì đóng hình
+                if (this.checkFirstClick) {
+                    this.firstCard = card;
+                } else if (this.compare(this.firstCard, card)){
+                    this.correctPairs++;              
+                    this.firstCard.setRight();
+                    card.setRight();                                      
+                } else {
+                    this.firstCard.closeImg();
+                    card.closeImg();
+                };
+                this.checkFirstClick = !this.checkFirstClick;
+
+                this.checkEndGame();
+            }
+
+            checkEndGame() {
+                if (this.correctPairs ===  this.amountPair) {
+                    alert("Enjoy!!");
+                    this.gameStart();
+                };
+            }
+            // Trả về chỉ số cột của card trong mảng
+            getPositionX(x) {
+                let xP = x - MARGIN_LEFT;
+                let countX = Math.floor(xP / (CARD_WIDTH + PADDING));   
+                return countX;    
+            }
+            // Trả về chỉ số dòng của card trong mảng
+            getPositionY(y) {
+                let yP = y - MARGIN_TOP;
+                let countY = Math.floor(yP / (CARD_HEIGHT + PADDING));   
+                return countY;
+            }
+
+            compare(card1, card2) {
+                if (card1.hiddenImage === card2.hiddenImage && (card1.xPos !== card2.xPos || card1.yPos !== card2.yPos)){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        }
+
+        var gameBoard = new GameBoard(AMOUNT_PAIR, document.getElementById('gameCanvas').getContext('2d'));
+        gameBoard.gameStart();
+    </script>
+</body>
+</html>
