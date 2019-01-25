@@ -29,13 +29,14 @@
     <script>
         const GAMEBOARD_WIDTH = 800;
         const GAMEBOARD_HEIGHT = 600;
+        const STOP_POSITION = 24;
         const GAME_TIME = 60000;
         const MARGIN_CHAR_X = 180;
         const MARGIN_CHAR_Y = 150;
         const CLOUD_APPEARED = 2;
-        const MARIO_SPEED = 30;
+        const MARIO_SPEED = 10;
         const GROUND_IMAGE = 'ground.png';
-        const GAME_SPEED = 100;
+        const GAME_SPEED = 20;
         const GAME_POINT = 10;
         const GAME_POINT_X = 50;
         const GAME_POINT_Y = 50;
@@ -125,21 +126,21 @@
             constructor() {
                 this.x = 10;
                 this.y = 10;
-                this.step = 1;
+                this.step = 10;
                 this.image = '1.png';               
             }
 
             show(ctx) {                    
                 var imgMario = new Image();
-                imgMario.src = this.step+'.png';                
+                imgMario.src = Math.floor(this.step/10)+'.png';                
                 imgMario.onload = function (){
                     ctx.drawImage(imgMario, 300, 300);                 
                 }
             }
 
             run() {
-                if (this.step === 3) {
-                    this.step=1;
+                if (this.step === 39) {
+                    this.step=10;
                 } else {
                     this.step++;
                 }
@@ -202,7 +203,7 @@
             }
 
             checkCloudStop(){
-                if (Math.round(this.cloud[1].xPos/MARIO_SPEED) === 7) {
+                if (Math.round(this.cloud[1].xPos/MARIO_SPEED) === STOP_POSITION) {
                     return true;
                 } else {
                     return false;
