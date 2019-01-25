@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game Typing - nguyentd92@gmail.com</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #d3d3d3;
+        }
+
+        #btn_start {
+            position: relative;
+            top: 50px;
+            left: 50px;
+        }   
+    </style>
+
+</head>
+<body onkeypress="keyDown(event)" onload="gameBoard.render()">
+    <canvas id="myCanvas" width="800px" height= "600px">        
+    </canvas>
+    <button id="btn_start" onclick="start()">START</button>
+    
+    <script>
+        const GAMEBOARD_WIDTH = 800;
+        const GAMEBOARD_HEIGHT = 600;
+        const GAME_TIME = 60000;
+        const MARGIN_CHAR_X = 180;
+        const MARGIN_CHAR_Y = 150;
+        const CLOUD_APPEARED = 2;
+        const MARIO_SPEED = 30;
+        const GROUND_IMAGE = 'ground.png';
+        const GAME_SPEED = 100;
+        const GAME_POINT = 10;
+        const GAME_POINT_X = 50;
+        const GAME_POINT_Y = 50;
+
+        class GamePoint {
+            constructor() {
+                this.matchPoint = 0;
+                this.wrong = 0;
+            }
+
+            increase() {
+                this.matchPoint += GAME_POINT;
+                console.log("increase");
+            }
+
+            decrease() {
+                this.wrong++;
+            }
+
+            show(ctx){
+                ctx.fillStyle = "#000000";
+                ctx.font = "30px Rockwell ";
+                ctx.fillText("SCORE: "+ this.matchPoint + "       WRONG: " + this.wrong, GAME_POINT_X,GAME_POINT_Y);
+
+            }
+        }
+
+        class Ground {
+            constructor(){
+                this.xPos = 0;
+                this.yPos = 250;
+                this.image = GROUND_IMAGE;
+            }
+
+            show(ctx) {
+                var imgCloud = new Image();
+
+                let x = this.xPos;
+                let y = this.yPos;
+                let char = this.char;                    
+                imgCloud.src = 'ground.png';
+                imgCloud.onload = function (){                    
+                    ctx.drawImage(imgCloud, x, y);                    
+                }                
+
+            }
+            
+            run() {
+                if (this.xPos > - 300) {                        
+                    this.xPos -= MARIO_SPEED;
+                } else {
+                    this.xPos = 0;
+                }
+            }
+
+        }
+
+        class TextCloud {
+            constructor (i) {
+                this.xPos = i*600+GAMEBOARD_WIDTH;
+                this.yPos = 100;
+                this.char = String.fromCharCode(Math.floor(Math.random()*25+65));                              
+            }
+
+            show(ctx) {
+                var imgCloud = new Image();
+
+                let x = this.xPos;
+                let y = this.yPos;
+                let char = this.char;                    
+                imgCloud.src = 'cloud.png';
+                imgCloud.onload = function (){
+                    ctx.drawImage(imgCloud, x, y); 
+                    ctx.fillStyle = "#000000";
+                    ctx.font = "80px Rockwell ";
+                    ctx.fillText(char, x + MARGIN_CHAR_X , y + MARGIN_CHAR_Y );                      
+                }                
+
+            }
+            
+            run() {                      
+                this.xPos -= MARIO_SPEED;
+            }
+        }
+    
+        class Mario {
+            constructor() {
+                this.x = 10;
+                this.y = 10;
+                this.step = 1;
+                this.image = '1.png';               
+            }
+
+            show(ctx) {                    
+                var imgMario = new Image();
+                imgMario.src = this.step+'.png';                
+                imgMario.onload = function (){
+                    ctx.drawImage(imgMario, 300, 300);                 
+                }
+            }
+
+            run() {
+                if (this.step === 3) {
+                    this.step=1;
+                } else {
+                    this.step++;
+                }
+            }
+        }
+
+        class Game {
+            constructor(context){
+                this.mario = new Mario();                
+                this.cloud = [];
+                this.ground = new Ground();
+                this.gamePoint = new GamePoint();
+                this.wrongTime = 0;
+                this.matchTime = 0;
+
+                for (let i=0; i <= CLOUD_APPEARED; i++) {
+                    this.cloud[i] = new TextCloud(i);
+                }
+                this.cloud.unshift(new TextCloud(-1));
+                this.cloud[0].char = "GO";
+                this.checkNextCloud = true;
+                this.context = context;
+                this.timeOut;
+            }
+
+            render() {
+                this.context.clearRect(0,0,GAMEBOARD_WIDTH,GAMEBOARD_HEIGHT);                
+                this.ground.show(this.context);
+
+                for (let i = 0; i < this.cloud.length ; i++) {
+                    this.cloud[i].show(this.context);
+                }
+                this.mario.show(this.context);
+                this.gamePoint.show(this.context);
+            }
+            
+
+            move() {                                  
+                this.ground.run();
+                for (let i = 0; i < this.cloud.length; i++) {
+                    this.cloud[i].run();
+                };
+                this.mario.run();            
+            }
+
+            checkMatchKey(codeKey) { 
+                if (!this.checkCloudStop()) {
+                    return false;
+                } ;            
+                if (String.fromCharCode(codeKey).toUpperCase() === this.cloud[1].char) {
+                    this.gamePoint.increase();
+                    this.cloud.shift();
+                    this.cloud.push(new TextCloud(CLOUD_APPEARED));
+                    this.matchTime++;
+                    return true;                    
+                } else {
+                    this.gamePoint.decrease();
+                    return false;
+                }
+            }
+
+            checkCloudStop(){
+                if (Math.round(this.cloud[1].xPos/MARIO_SPEED) === 7) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+       
+
+        }
+
+        var gameBoard = new Game(document.getElementById("myCanvas").getContext('2d'));
+        gameBoard.move();
+
+
+        function running() {
+            var timeOut = setInterval(function(){
+                gameBoard.move();
+                gameBoard.render();
+                if (gameBoard.checkCloudStop()) {
+                    clearInterval(timeOut);
+                }
+            },GAME_SPEED);
+                       
+        }
+
+        function clickOn(){
+            gameBoard.move();
+        }
+
+        function keyDown(evt) {
+            if (gameBoard.checkMatchKey(evt.keyCode)) {
+                running();
+            } else {
+                gameBoard.render();
+            }
+        }
+
+        function start() {
+            running();
+        }
+
+    </script>
+</body>
+</html>
