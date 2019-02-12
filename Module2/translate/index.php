@@ -14,26 +14,27 @@
     </form>
 
     <?php
-        $result = "Out of ability";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $weight = $_POST["weight"];
             $result = null;
 
             $result = translate($weight);
+            echo "Number: ".$weight."</br>Result: ".$result;
         };
 
-        echo "Number: ".$weight."</br>Result: ".$result;
+        
         
 
         function translate($input) {
+            if ($input === 0) {
+                return "zero";
+            };
+
             $pattern = "/^[1-9]{1}\d{0,2}$/";
             
             if (!preg_match($pattern, $input)) {
                 return "out of ability";
-            };
-            if ($input == 0) {
-                return "zero";
             };
             
             return hundredWord($input);
