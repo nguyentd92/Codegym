@@ -14,9 +14,11 @@
         }
 
         #btn_start {
-            position: relative;
-            top: 50px;
-            left: 50px;
+            position: absolute;
+            top: 450px;
+            left: 45%;
+            width: 100px;
+            height: 50px;
         }   
     </style>
 
@@ -27,16 +29,17 @@
     <button id="btn_start" onclick="start()">START</button>
     
     <script>
+        
         const GAMEBOARD_WIDTH = 800;
         const GAMEBOARD_HEIGHT = 600;
-        const STOP_POSITION = 24;
         const GAME_TIME = 60000;
         const MARGIN_CHAR_X = 180;
         const MARGIN_CHAR_Y = 150;
         const CLOUD_APPEARED = 2;
-        const MARIO_SPEED = 10;
+        const MARIO_SPEED = 20;
         const GROUND_IMAGE = 'ground.png';
-        const GAME_SPEED = 20;
+        const GAME_SPEED = 80;        
+        const STOP_POSITION = Math.floor(GAMEBOARD_WIDTH/(MARIO_SPEED*3));
         const GAME_POINT = 10;
         const GAME_POINT_X = 50;
         const GAME_POINT_Y = 50;
@@ -45,22 +48,29 @@
             constructor() {
                 this.matchPoint = 0;
                 this.wrong = 0;
+                this.keyPerMin = 0;
             }
 
             increase() {
                 this.matchPoint += GAME_POINT;
-                console.log("increase");
             }
 
             decrease() {
                 this.wrong++;
             }
 
+            setKeyPerMin(value) {
+                this.keyPerMin = value;
+            }
+
+            rateCorrect() {
+                return Math.floor((this.matchPoint / (this.matchPoint + this.wrong*GAME_POINT))*100);
+            }
+
             show(ctx){
                 ctx.fillStyle = "#000000";
                 ctx.font = "30px Rockwell ";
-                ctx.fillText("SCORE: "+ this.matchPoint + "       WRONG: " + this.wrong, GAME_POINT_X,GAME_POINT_Y);
-
+                ctx.fillText("SCORE: "+ this.matchPoint + "       WRONG: " + this.wrong  + "   KPM : " + this.keyPerMin, GAME_POINT_X,GAME_POINT_Y);
             }
         }
 
@@ -78,10 +88,7 @@
                 let y = this.yPos;
                 let char = this.char;                    
                 imgCloud.src = 'ground.png';
-                imgCloud.onload = function (){                    
-                    ctx.drawImage(imgCloud, x, y);                    
-                }                
-
+                ctx.drawImage(imgCloud, x, y);
             }
             
             run() {
@@ -95,10 +102,11 @@
         }
 
         class TextCloud {
-            constructor (i) {
+            constructor (i, setChar) {
                 this.xPos = i*600+GAMEBOARD_WIDTH;
                 this.yPos = 100;
-                this.char = String.fromCharCode(Math.floor(Math.random()*25+65));                              
+                this.char = setChar;
+                this.textColor = "#000000";                           
             }
 
             show(ctx) {
@@ -108,12 +116,11 @@
                 let y = this.yPos;
                 let char = this.char;                    
                 imgCloud.src = 'cloud.png';
-                imgCloud.onload = function (){
-                    ctx.drawImage(imgCloud, x, y); 
-                    ctx.fillStyle = "#000000";
-                    ctx.font = "80px Rockwell ";
-                    ctx.fillText(char, x + MARGIN_CHAR_X , y + MARGIN_CHAR_Y );                      
-                }                
+                ctx.drawImage(imgCloud, x, y); 
+                ctx.fillStyle = this.textColor;
+                ctx.font = "80px Rockwell ";
+                ctx.fillText(char, x + MARGIN_CHAR_X , y + MARGIN_CHAR_Y );                      
+            
 
             }
             
@@ -126,21 +133,20 @@
             constructor() {
                 this.x = 10;
                 this.y = 10;
-                this.step = 10;
+                this.step = 5;
                 this.image = '1.png';               
             }
 
             show(ctx) {                    
                 var imgMario = new Image();
-                imgMario.src = Math.floor(this.step/10)+'.png';                
-                imgMario.onload = function (){
-                    ctx.drawImage(imgMario, 300, 300);                 
-                }
+                imgMario.src = Math.floor(this.step/5)+'.png';            
+                ctx.drawImage(imgMario, 300, 300);                 
+            
             }
 
             run() {
-                if (this.step === 39) {
-                    this.step=10;
+                if (this.step >= 19) {
+                    this.step=5;
                 } else {
                     this.step++;
                 }
@@ -148,7 +154,9 @@
         }
 
         class Game {
-            constructor(context){
+            constructor(context){                
+                this.width = GAMEBOARD_WIDTH;
+                this.height = GAMEBOARD_HEIGHT;
                 this.mario = new Mario();                
                 this.cloud = [];
                 this.ground = new Ground();
@@ -157,17 +165,64 @@
                 this.matchTime = 0;
 
                 for (let i=0; i <= CLOUD_APPEARED; i++) {
-                    this.cloud[i] = new TextCloud(i);
+                    this.cloud[i] = new TextCloud(i, this.setChar());
                 }
-                this.cloud.unshift(new TextCloud(-1));
-                this.cloud[0].char = "GO";
+                this.cloud.unshift(new TextCloud(-1, "GO"));
                 this.checkNextCloud = true;
                 this.context = context;
                 this.timeOut;
+                this.gameSpeed = GAME_SPEED;
+                this.cloudAppeared = CLOUD_APPEARED;
             }
 
-            render() {
-                this.context.clearRect(0,0,GAMEBOARD_WIDTH,GAMEBOARD_HEIGHT);                
+            newGame(){
+                this.mario = new Mario();                
+                this.cloud = [];
+                this.ground = new Ground();
+                this.gamePoint = new GamePoint();
+                this.wrongTime = 0;
+                this.matchTime = 0;
+                this.gameTime;
+
+                for (let i=0; i <= CLOUD_APPEARED; i++) {
+                    this.cloud[i] = new TextCloud(i, this.setChar());
+                }
+                this.cloud.unshift(new TextCloud(-1, "GO"));
+                this.checkNextCloud = true;
+                this.context = context;
+                this.cloudAppeared = CLOUD_APPEARED;
+                this.move();
+            }
+
+            start() {
+                this.timeStart = new Date().getTime();
+            }
+
+            setChar() {
+                let char;
+                let distance = this.matchTime;
+                let keyCode;
+                let stringChar = "asdfqwerzxcvbgtyhnuiopjklm".toUpperCase();
+                if (distance <= 10) {
+                    char = stringChar.charAt(Math.floor(Math.random()*4+0));
+                } else if (distance <= 20) {
+                    char = stringChar.charAt(Math.floor(Math.random()*4+4));
+                } else if (distance <= 30) {
+                    char = stringChar.charAt(Math.floor(Math.random()*4+8));
+                } else if (distance <= 36) {
+                    char = stringChar.charAt(Math.floor(Math.random()*3+22));
+                } else if (distance <= 40) {
+                    char = stringChar.charAt(Math.floor(Math.random()*4+22));
+                } else if (distance <= 50) {
+                    char = stringChar.charAt(Math.floor(Math.random()*11+15));
+                } else {
+                    char = stringChar.charAt(Math.floor(Math.random()*26));
+                };
+                return char;
+            }
+
+            render() {    
+                this.context.clearRect(0,0,this.width,this.height);      
                 this.ground.show(this.context);
 
                 for (let i = 0; i < this.cloud.length ; i++) {
@@ -186,20 +241,36 @@
                 this.mario.run();            
             }
 
-            checkMatchKey(codeKey) { 
+            checkMatchKey(codeKey) {
+                this.setKeyPerMin();
                 if (!this.checkCloudStop()) {
                     return false;
                 } ;            
                 if (String.fromCharCode(codeKey).toUpperCase() === this.cloud[1].char) {
                     this.gamePoint.increase();
                     this.cloud.shift();
-                    this.cloud.push(new TextCloud(CLOUD_APPEARED));
+                    this.cloud.push(new TextCloud(this.cloudAppeared, this.setChar()));
                     this.matchTime++;
+                    this.setSpeed();
                     return true;                    
                 } else {
+                    this.cloud[1].textColor = "#ff0000";
                     this.gamePoint.decrease();
                     return false;
                 }
+            }
+
+            setSpeed() {
+                if (this.matchTime % 4 === 0 && this.gameSpeed > 25) {
+                    this.gameSpeed -= 5 ;
+                }
+
+            }
+
+            setKeyPerMin() {
+                
+                this.gameTime = new Date().getTime() - this.timeStart;
+                this.gamePoint.setKeyPerMin( Math.round(this.matchTime * 60 / (this.gameTime/1000)) );
             }
 
             checkCloudStop(){
@@ -209,39 +280,68 @@
                     return false;
                 }
             }
-       
 
+            endGame() {
+                let evaluation;
+                let time = Math.round(this.gameTime / 1000);
+                let kpm = Math.round(this.matchTime * 60 / time);   
+                let rateCorrect = this.gamePoint.rateCorrect();         
+
+                if (kpm > 35) {
+                    evaluation = "TRY SOMETHING HARDER!!";
+                } else if (kpm > 20) {
+                    evaluation = "GOOD JOB!!";
+                } else {
+                    evaluation = "HURRY UP";
+                };
+
+                alert("Game over");
+
+                this.context.clearRect(0, 0, this.width, this.height);
+                this.context.fillStyle = "#000000";
+                this.context.font = "50px Rockwell";                
+                this.context.fillText(evaluation, 160, 200);
+                this.context.fillText("Keys per min: " + kpm, 160,250);
+                this.context.fillText("Game time(s): " + time, 160, 300);
+                this.context.fillText("Correct: " + rateCorrect + " %", 160, 350);
+            }
         }
 
-        var gameBoard = new Game(document.getElementById("myCanvas").getContext('2d'));
-        gameBoard.move();
-
+        var gameBoard = new Game(document.getElementById("myCanvas").getContext('2d'));        
+        gameBoard.render();
+        var timeOut;
 
         function running() {
-            var timeOut = setInterval(function(){
+            timeOut = setInterval(function(){
                 gameBoard.move();
                 gameBoard.render();
                 if (gameBoard.checkCloudStop()) {
                     clearInterval(timeOut);
-                }
-            },GAME_SPEED);
-                       
+                };
+            },gameBoard.gameSpeed);                       
         }
 
         function clickOn(){
-            gameBoard.move();
+            gameBoard.newGame();
         }
 
         function keyDown(evt) {
+            if (evt.keyCode === 13) {
+                clearInterval(timeOut);
+                gameBoard.endGame();
+                return;
+            };
             if (gameBoard.checkMatchKey(evt.keyCode)) {
                 running();
             } else {
                 gameBoard.render();
-            }
+            };
         }
 
         function start() {
             running();
+            gameBoard.start();
+            document.getElementById("btn_start").hidden = true;
         }
 
     </script>
