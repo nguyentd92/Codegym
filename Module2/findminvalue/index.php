@@ -12,7 +12,7 @@
             $min = $array[0];
             $position = 0;
             foreach ($array as $index => $number) {
-                if ($min > $array[$index]) {
+                if ($min > $number) {
                     $min = $number;
                     $position = $index;
                 };            
@@ -31,7 +31,7 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $str = $_POST["str"];
 
-            $regex = "/^[0-9 ]+$/";
+            $regex = "/^\d{1}[0-9 ]+\d{1}$/";
 
             if ( preg_match($regex, $str)) {
                 $array = explode(' ',$str);
@@ -45,9 +45,7 @@
                 echo "<br/>Giá trị nhỏ nhất: $result[0] tại index $result[1]";
             } else {
                 echo "Nhập sai";
-            }
-
-           
+            }          
 
         }
     ?>

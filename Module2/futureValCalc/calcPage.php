@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -70,7 +70,6 @@
                 </form>            
             </div>";
         }
-
     ?>
 </body>
 </html>

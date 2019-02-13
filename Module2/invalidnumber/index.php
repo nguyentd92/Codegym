@@ -27,10 +27,6 @@
                     case 'x':
                         return $num1 * $num2;
                     case '/':
-                        if ($num2 == 0) {
-                            throw new Exception();
-                        }
-
                         return $num1 / $num2;
                     default:
                 }
@@ -43,11 +39,20 @@
             $number1st = $_POST['number1st'];
             $number2nd = $_POST['number2nd'];
 
-            echo "<br/>x=$number1st y=$number2nd";
-            echo "<br/>Tổng x + y = ".calc($number1st, $number2nd,'+');
-            echo "<br/>Hiệu x - y = ".calc($number1st, $number2nd,'-');
-            echo "<br/>Tích x * y = ".calc($number1st, $number2nd,'x');
-            echo "<br/>Thương x / y = ".calc($number1st, $number2nd,'/');
+            $pattern = "/^\d+$/";
+            try {
+                if ($number2nd == 0 || !preg_match($pattern, $number1st) || !preg_match($pattern, $number2nd)) {
+                    throw new Exception("không hợp lệ");
+                }
+                echo "<br/>x=$number1st y=$number2nd";
+                echo "<br/>Tổng x + y = ".calc($number1st, $number2nd,'+');
+                echo "<br/>Hiệu x - y = ".calc($number1st, $number2nd,'-');
+                echo "<br/>Tích x * y = ".calc($number1st, $number2nd,'x');
+                echo "<br/>Thương x / y = ".calc($number1st, $number2nd,'/');
+            } catch (Exception $e) {
+                echo 'Lỗi ' .$e->getMessage();
+            }
+
         };
     ?>
 

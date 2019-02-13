@@ -14,17 +14,13 @@
     </form>
 
     <?php
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $weight = $_POST["weight"];
             $result = null;
 
             $result = translate($weight);
             echo "Number: ".$weight."</br>Result: ".$result;
-        };
-
-        
-        
+        };    
 
         function translate($input) {
             if ($input === 0) {
@@ -52,8 +48,7 @@
                 return oneWord($hundred)." hundred ";
             } else {
                 return oneWord($hundred)." hundred and ".tenWord($remainder);
-            }
-            
+            }            
         }
 
         function tenWord($input) {
@@ -90,7 +85,6 @@
                     return "eighty ".oneWord($remainder);                        
                 default:                    
             };
-
                     
             return oneWord($ten)."ty ".oneWord($remainder); 
         }
