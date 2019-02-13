@@ -33,7 +33,10 @@
 
             $regex = "/^\d{1}[0-9 ]+\d{1}$/";
 
-            if ( preg_match($regex, $str)) {
+            try {
+                if (!preg_match($regex, $str)) {
+                    throw new Exception();
+                };
                 $array = explode(' ',$str);
 
                 $result = minOfArray($array);
@@ -43,7 +46,7 @@
                     echo $value." ";
                 }
                 echo "<br/>Giá trị nhỏ nhất: $result[0] tại index $result[1]";
-            } else {
+            } catch (Exception $e) {
                 echo "Nhập sai";
             }          
 

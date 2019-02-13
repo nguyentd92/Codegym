@@ -8,29 +8,7 @@
 </head>
 <body>
     <?php
-        // function load($filename){
-        //         // get content from file
-        //         $jsondata = file_get_contents($filename);
-        //         // decode content to array
-        //         $arr_data = json_decode($jsondata, true);
-                
-        //         return $arr_data;
-        // }
-        // function saveDataJSON($filename,$array) {
-        //     try {
-        //         // converts json data into array
-        //         $arr_data = load($filename);
-        //         // Push user data to array
-        //         array_push($arr_data, $array);
-        //         //Convert updated array to JSON
-        //         $jsondata = json_encode($arr_data, JSON_PRETTY_PRINT);
-        //         //write json data into json file
-        //         file_put_contents($filename, $jsondata);
-        //         echo "Thêm hàng thành công!";
-        //     } catch (Exception $e) {
-        //         echo 'Lỗi: ', $e->getMessage(), "\n";
-        //     }
-        // }
+
         function maxOfArray($matrix) {
             $max = $matrix[0][0];
             $rowOfMax = $colOfMax = 0;

@@ -40,6 +40,7 @@
             $number2nd = $_POST['number2nd'];
 
             $pattern = "/^\d+$/";
+            
             try {
                 if ($number2nd == 0 || !preg_match($pattern, $number1st) || !preg_match($pattern, $number2nd)) {
                     throw new Exception("không hợp lệ");
