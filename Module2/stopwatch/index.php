@@ -11,7 +11,7 @@
         $arrayNumber = array();
 
         for ($index = 0; $index < 10000; $index++) {
-            array_push($arrayNumber, mt_rand(0,1000));
+            array_push($arrayNumber, mt_rand(0,10000));
         };
 
         function selectSort($array){
@@ -35,6 +35,10 @@
         class StopWatch {
             private $startTime;
             private $endTime;
+
+            function __construct() {
+                $this->startTime = microtime(true);
+            }
 
             public function get_startTime(){
                 return $this->startTime;
@@ -61,13 +65,15 @@
 
         $stopWatch = new StopWatch();
 
+        echo ($stopWatch->get_startTime());
+
         $stopWatch->start();
 
         selectSort($arrayNumber);
 
         $stopWatch->stop();
 
-        echo "Times: ".$stopWatch->getElapsedTime()." miliseconds<br/>";
+        echo "<br/>Times: ".$stopWatch->getElapsedTime()." miliseconds<br/>";
         print_r(selectSort($arrayNumber));
     ?>
 </body>
