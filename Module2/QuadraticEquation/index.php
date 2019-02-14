@@ -43,24 +43,28 @@
                 return (-$this->b - sqrt($this->getDiscriminant())) / 2*$this->a;
             }
 
+            public function getRoot() {
+                try {
+                    echo "Delta = ".$this->getDiscriminant()."<br/>";
+                    if ($this->getDiscriminant() < 0) {
+                        throw new Exception('Phương trình vô nghiệm');
+                    };
+        
+                    if ($this->getDiscriminant() ==0) {
+                        return "Phương trình có nghiệm kép ".$this->getRoot1();
+                    } else {
+                        return "Phương trình có 2 nghiệm ".$this->getRoot1()." và ".$this->getRoot2();
+                    }
+                } catch (Exception $e) {
+                    return $e->getMessage();
+                }
+            }
+
         }
 
         $tinh = new QuadraticEquation(2.5,4,2);
 
-        try {
-            echo "Delta = ".$tinh->getDiscriminant()."<br/>";
-            if ($tinh->getDiscriminant() < 0) {
-                throw new Exception('Phương trình vô nghiệm');
-            };
-
-            if ($tinh->getDiscriminant() ==0) {
-                echo "Phương trình có nghiệm kép ".$tinh->getRoot1();
-            } else {
-                echo "Phương trình có 2 nghiệm ".$tinh->getRoot1()." và ".$tinh->getRoot2();
-            }
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        echo $tinh->getRoot();
         
     ?>
 </body>
