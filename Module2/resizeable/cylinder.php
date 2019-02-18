@@ -3,7 +3,7 @@
 include_once ('circle.php');
 class Cylinder extends Circle
 {
-    public $height;
+    private $height;
     public function __construct($name, $radius, $height)
     {
         parent::__construct($name, $radius);

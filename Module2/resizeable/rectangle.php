@@ -3,8 +3,8 @@
 include_once ('shape.php');
 class Rectangle extends Shape implements iResizeable
 {
-    public $width;
-    public $height;
+    private $width;
+    private $height;
     public function __construct($name, $width, $height)
     {
         parent::__construct($name);

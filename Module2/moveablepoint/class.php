@@ -1,7 +1,7 @@
 <?php
     class Point {
-        public $x;
-        public $y;
+        private $x;
+        private $y;
 
         public function __construct($x = 0.0,$y = 0.0) {
             $this->x = $x;
@@ -42,10 +42,11 @@
             $this->ySpeed = $ySpeed;
         }
 
-        public function toString() { return "($this->x,$this->y),speed=($this->xSpeed,$this->ySpeed)"; }
+        public function toString() { return parent::toString()."speed=($this->xSpeed,$this->ySpeed)"; }
+
         public function move() {
-            $this->x += $this->xSpeed;
-            $this->y += $this->ySpeed;
+            parent::setX(parent::getX()+$this->xSpeed);
+            parent::setY(parent::getY()+$this->ySpeed);
 
             return $this;
         }

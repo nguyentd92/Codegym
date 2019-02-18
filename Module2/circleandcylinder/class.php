@@ -1,8 +1,12 @@
 <?php
     class Circle {
-        public $radius;
-        public $color;
-        public $area;
+        private $radius;
+        private $color;
+        private $area;
+
+        function __get($name) {
+            return $this->$name;
+        }
 
         function __construct($radius, $color) {
             $this->radius = $radius;
@@ -17,8 +21,8 @@
     }
 
     class Cylinder extends Circle {
-        public $height;
-        public $volume;
+        private $height;
+        private $volume;
         
         public function __construct($radius, $color,$height) {
             parent::__construct($radius,$color);
