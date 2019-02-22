@@ -18,6 +18,6 @@ class Circle extends Shape implements iResizeable
     }
 
     public function resize($percent){
-        $this->radius *= sqrt($percent/100);
+        $this->radius *= sqrt($percent/100 + 1);
     }
 }

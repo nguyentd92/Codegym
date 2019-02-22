@@ -7,17 +7,25 @@ include_once ('rectangle.php');
 include_once ('square.php');
 
 $shapes[0] = new Circle('Circle 01', 3);
-echo 'Circle area: ' . $shapes[0]->calculateArea() . '<br />';
-echo 'Circle perimeter: ' . $shapes[0]->calculatePerimeter() . '<br />';
 $shapes[1] = new Cylinder('Cylinder 01', 3 , 4);
-echo 'Cylinder area: ' . $shapes[1]->calculateArea() . '<br />';
-echo 'Cylinder perimeter: ' . $shapes[1]->calculatePerimeter() . '<br />';
 $shapes[2] = new Rectangle('Rectangle 01', 3 , 4);
-echo 'Rectangle area: ' . $shapes[2]->calculateArea() . '<br />';
-echo 'Rectangle perimeter: ' . $shapes[2]->calculatePerimeter() . '<br />';
 $shapes[3] = new Square('Square 01', 4 , 4, 4);
-echo 'Rectangle area: ' . $shapes[3]->calculateArea() . '<br />';
-echo 'Rectangle perimeter: ' . $shapes[3]->calculatePerimeter() . '<br /><br/>';
+
+foreach ($shapes as $shape) {
+    if ($shape instanceof Cylinder) {
+        $typeShape = 'Cylinder';
+    } else if ($shape instanceof Square) {
+        $typeShape = 'Square';        
+    } else if ($shape instanceof Rectangle) {
+        $typeShape = 'Rectangle';
+    } else if ($shape instanceof Circle) {
+        $typeShape = 'Circle';
+    }
+    echo $typeShape." area: ". $shape->calculateArea() . "<br />";
+    echo $typeShape." perimeter: ". $shapes[0]->calculatePerimeter() . "<br />";
+};
+
+echo "<br/>";
 
 foreach ($shapes as $shape) {
     echo "Shape area: ".$shape->calculateArea().'<br/>';
