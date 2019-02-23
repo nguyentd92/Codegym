@@ -1,9 +1,8 @@
 <?php
-// namespace Controller;
-
-// use Controller\BaseController;
-
 require_once 'base_controller.php';
+namespace Controller;
+
+use Controller\BaseController;
 
 class PagesController extends BaseController {
     function __construct() {
