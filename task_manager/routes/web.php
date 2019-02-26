@@ -17,26 +17,15 @@ Route::get('/', function () {
 
 
 Route::prefix('customer')->group(function () {
-    Route::get('index', function () {
-        // Hiển thị danh sách khách hàng
-        return view('modules.customer.index');
-    });
+    Route::get('index', 'CustomerController@index');
   
-    Route::get('create', function () {
-        // Hiển thị Form tạo khách hàng
-    });
+    Route::get('create', 'CustomerController@create');
   
-    Route::post('store', function () {
-        // Xử lý lưu dữ liệu tạo khách hàng thong qua phương thức POST từ form
-    });
+    Route::post('store', 'CustomerController@store');
   
-    Route::get('{id}/show', function () {
-        // Hiển thị thông tin chi tiết khách hàng có mã định danh id
-    });
+    Route::get('{id}/show', 'CustomerController@show');
   
-    Route::get('{id}/edit', function () {
-        // Hiển thị Form chỉnh sửa thông tin khách hàng
-    });
+    Route::get('{id}/edit', 'CustomerController@edit');
   
     Route::patch('{id}/update', function () {
         // xử lý lưu dữ liệu thông tin khách hàng được chỉnh sửa thông qua PATCH từ form
@@ -45,4 +34,22 @@ Route::prefix('customer')->group(function () {
     Route::delete('{id}', function () {
         // Xóa thông tin dữ liệu khách hàng
     });
+  });
+
+  Route::prefix('tasks')->group(function() {
+      
+      Route::get('index', 'TaskController@index');
+
+      Route::get('create', 'TasksController@create');
+
+      Route::post('tasks', 'TasksController@store');
+
+      Route::get('tasks/{taskId}', 'TasksController@show');
+
+      Route::get('tasks/{taskId}/edit', 'TasksController@edit');
+
+      Route::put('tasks/{taskId}','TasksController@update');
+
+      Route::delete('tasks/{photo}', 'TasksController@destroy');
+      
   });
