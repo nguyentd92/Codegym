@@ -58,3 +58,41 @@ Route::post('/display_discount', function (Illuminate\Http\Request $request) {
 
     return view('discount_result', compact(['discountPrice','discountAmount','productDescription','price','discountPercent']));
 });
+
+Route::get('/translation', function() {
+    $result = '';
+
+    return view('translation', compact(['result']));
+});
+
+Route::post('/translate' , function (Illuminate\Http\Request $request) {
+    
+
+    class TranslateController {
+        private $dictionary;
+    
+        public function __construct() {
+            $this->dictionary = array(
+                'one' => 'một',
+                'two' => 'hai',
+                'three' => 'ba',
+                'four' => 'bốn',
+                'hello' => 'xin chào'
+            );
+        }
+    
+        public function toVietnamese($word) {
+            foreach ($this->dictionary as $key => $result) {
+                if ($key === $word) {
+                    return $result;
+                }; 
+                
+            }
+            return 'No result';
+        }
+    }
+    $input = $request->word_input;
+    $translate = new TranslateController();
+    $result = $translate->toVietnamese($input);
+    return view('translation', compact(['result']));
+}) ;
