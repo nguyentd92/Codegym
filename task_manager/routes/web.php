@@ -17,32 +17,29 @@ Route::get('/', function () {
 
 
 Route::prefix('customers')->group(function () {
-    Route::get('/', 'CustomerController@index');
+
+    Route::get('/', 'CustomerController@index')->name('getCustomers');
   
-    Route::get('create', 'CustomerController@create');
+    Route::get('create', 'CustomerController@create')->name('customers.create');
   
-    Route::post('store', 'CustomerController@store');
+    Route::post('store', 'CustomerController@store')->name('customers.store');
   
     Route::get('{id}/show', 'CustomerController@show');
   
     Route::get('{id}/edit', 'CustomerController@edit');
+
+    Route::post('{key}/edit', 'CustomerController@update');
   
-    Route::patch('{id}/update', function () {
-        // xử lý lưu dữ liệu thông tin khách hàng được chỉnh sửa thông qua PATCH từ form
-    });
-  
-    Route::delete('{id}', function () {
-        // Xóa thông tin dữ liệu khách hàng
-    });
+    Route::post('/', 'CustomerController@delete' );
   });
 
   Route::prefix('tasks')->group(function() {
       
-      Route::get('index', 'TaskController@index');
+      Route::get('/', 'TasksController@index')->name('tasks.index');
 
-      Route::get('create', 'TasksController@create');
+      Route::get('create', 'TasksController@create')->name('tasks.create');
 
-      Route::post('tasks', 'TasksController@store');
+      Route::post('store', 'TasksController@store')->name('tasks.store');
 
       Route::get('tasks/{taskId}', 'TasksController@show');
 

@@ -8,8 +8,8 @@
 </head>
 <body>
 
-    <form method="post" action="update">
-        @csrf
+    <form method="post" action=''>
+        @csrf        
         <div>
             <label>ID</label><br/>
             <input type='text' name='id'/>
