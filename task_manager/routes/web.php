@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 
-Route::prefix('customer')->group(function () {
-    Route::get('index', 'CustomerController@index');
+Route::prefix('customers')->group(function () {
+    Route::get('/', 'CustomerController@index');
   
     Route::get('create', 'CustomerController@create');
   
