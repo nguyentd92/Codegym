@@ -10,23 +10,38 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function() { return view('index');});
 
-Route::get('/', function () { return view('welcome'); })->name('blog.index');
+Route::prefix('blog')->group(function() {
 
-Route::get('add', 'BlogController@add')->name('blog.add');
+    Route::get('/', function () { return view('blog.index'); })->name('blog.index');
 
-Route::put('add', 'BlogController@store')->name('blog.store');
+    Route::get('add', 'BlogController@add')->name('blog.add');
 
-Route::get('list', 'BlogController@list')->name('blog.list');
+    Route::put('add', 'BlogController@store')->name('blog.store');
 
-Route::get('modify', 'BlogController@modify')->name('blog.modify');
+    Route::get('list', 'BlogController@list')->name('blog.list');
 
-Route::get('show/{id}', 'BlogController@showById')->name('blog.showById');
+    Route::get('modify', 'BlogController@modify')->name('blog.modify');
 
-Route::get('edit/{id?}', 'BlogController@edit')->name('blog.edit');
+    Route::get('show/{id}', 'BlogController@showById')->name('blog.show');
 
-Route::put('edit/{id?}', 'BlogController@update')->name('blog.update');
+    Route::get('edit/{id?}', 'BlogController@edit')->name('blog.edit');
 
-Route::get('delete/{id}', 'BlogController@delete')->name('blog.delete');
+    Route::put('edit/{id?}', 'BlogController@update')->name('blog.update');
 
-Route::delete('delete', 'BlogController@destroy')->name('blog.destroy');
+    Route::get('delete/{id}', 'BlogController@delete')->name('blog.delete');
+
+    Route::delete('delete', 'BlogController@destroy')->name('blog.destroy');
+});
+
+Route::prefix('login')->group(function() {
+
+    Route::get('/', 'LoginController@loginForm')->name('login.form');
+
+    Route::post('/post', 'LoginController@loginPost')->name('login.post');
+
+});
+
+
+

@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function list() {
-        $blogs = Blog::all();
-        return view('listblog', compact('blogs'));
+        $blogs = Blog::paginate(5);
+        return view('blog.list', compact('blogs'));
     }
 
     public function add() {
-        return view('addblog');
+        return view('blog.add');
     }
 
     public function store(Request $request) {
@@ -28,15 +28,15 @@ class BlogController extends Controller
     }
 
     public function modify() {
-        return view('modifylist', ['blogs' => Blog::all()]);
+        return view('blog.modify', ['blogs' => Blog::all()]);
     }
 
     public function showById($id) {
-        return view('showblog', ['blog' => Blog::findOrFail($id)]);
+        return view('blog.show', ['blog' => Blog::findOrFail($id)]);
     }
 
     public function edit($id) {
-        return view('editblog', ['blog' => Blog::findOrFail($id)]);
+        return view('blog.edit', ['blog' => Blog::findOrFail($id)]);
     }
 
     public function update($id, Request $request) {
@@ -48,13 +48,14 @@ class BlogController extends Controller
     }   
     
     public function delete($id) {
-        return view('deleteblog', ['blog' => Blog::findOrFail($id)]);
+        return view('blog.delete', ['blog' => Blog::findOrFail($id)]);
     }
 
     public function destroy(Request $request) {
         DB::table('blogs')->where('id', '=', $request->id)->delete();
         return redirect()->route('blog.modify', ['blogs' => Blog::all()]);
     }
+   
 
 }
 
