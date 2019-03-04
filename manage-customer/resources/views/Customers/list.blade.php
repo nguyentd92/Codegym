@@ -7,9 +7,7 @@
           <div class="col-12">
               <h1>Danh Sách Khách Hàng</h1>
           </div>
-          <a class="btn btn-outline-primary" href="" data-toggle="modal" data-target="#cityModal">
-              Lọc
-          </a>
+
           <div class="col-12">
               @if (Session::has('success'))
                   <p class="text-success">
@@ -31,6 +29,42 @@
                       </div>
               @endif
           </div>
+
+          <div class="col-6">
+          <a class="btn btn-outline-primary" href="" data-toggle="modal" data-target="#cityModal">
+                Lọc
+            </a>
+        </div>
+          <div class="col-6">
+
+                <form class="navbar-form navbar-left" action="">
+              
+                  @csrf
+              
+                    <div class="row">
+              
+                        <div class="col-8">
+              
+                            <div class="form-group">
+              
+                                <input type="text" class="form-control" placeholder="Search">
+              
+                            </div>
+              
+                        </div>
+              
+                        <div class="col-4">
+              
+                            <button type="submit" class="btn btn-default">Tìm kiếm</button>
+              
+                        </div>
+              
+                    </div>
+              
+                </form>
+              
+              </div>
+              
           <table class="table table-striped">
               <thead>
               <tr>
@@ -63,7 +97,14 @@
               @endif
               </tbody>
           </table>
+          <div class="col-6">
           <a class="btn btn-primary" href="{{ route('customers.create') }}">Thêm mới</a>
+          </div>
+          @if(!isset($cityFilter))
+          <div class="col-6">
+            <div class="pagination float-right">{{ $customers->links() }}</div>
+          </div>
+          @endif
       </div>
  
       <!-- Modal -->

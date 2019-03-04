@@ -40,4 +40,6 @@ class CityController extends Controller
         //cap nhat xong quay ve trang danh sach tinh thanh
         return redirect()->route('cities.index');
       }
+
+
 }
