@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 use App\Task;
 use Illuminate\Http\Request;
+use App\Http\Requests\TaskCreateRequest;
 use Session;
+use Storage;
 
 class TasksController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
 
-    //Lấy ra toàn bộ các task từ database thông qua truy vấn bằng Eloquent
-    $tasks = Task::all();
-        
-    // Trả về view index và truyền biến tasks chứa danh sách các task
+    $keyword = $request->get('keyword');
+    
+    if ($keyword) {
+        $tasks = Task::where('title','like',"%$keyword%")->paginate(5);
+    } else {
+    $tasks = Task::paginate(5);
+    }
     return view('index', compact('tasks'));
 
     }
@@ -21,20 +26,73 @@ class TasksController extends Controller
         return view('add');
     }
 
-    public function store(Request $request) {
+    public function store(TaskCreateRequest $request) {
         $task = new Task;
-        $task->setTask($request);
+
+        $task->title = $request->inputTitle;
+        $task->content = $request->inputContent;
+        $task->duedate = $request->inputDueDate;
+                $file = $request->inputFile;
+
+        if ($request->hasFile('inputFile')) {
+            $image = $request->file('inputFile');
+            $path = $image->store('images','public');
+            $task->image = $path;
+        }
+
+       $task->save();
+
         $message = "Tạo Task $request->inputTitle thành công!";
         Session::flash('create-success', $message);
     
-        return redirect()->route('tasks.index', compact('message'));
+        return redirect()->route('tasks.index');
     }
     
-    public function show($taskId) {}
+    public function modify() {
+        $tasks = Task::all();
+        return view('modify', compact(['tasks']));
+    }
+    public function show($taskId) {
+        $task = Task::findOrFail($taskId);
 
-    public function edit($taskId) {}
+        return view('show', compact('task'));
+    }
 
-    public function update($taskId) {}
+    public function edit($taskId) {
+        return view('edit', ['task' => Task::find($taskId)]);
+    }
 
-    public function destroy($photo) {}
+    public function update(TaskCreateRequest $request, $taskId) {
+        $task = Task::findOrFail($taskId);
+
+        $task->title = $request->input('inputTitle');
+        $task->content = $request->input('inputContent');
+        $task->duedate = $request->input('inputDueDate');   
+
+        if ($request->hasFile('inputFile')) {
+
+            $currentImg = $task->image;
+
+            if ($currentImg) {
+                Storage::delete('/public/' . $currentImg);
+            }
+
+            $image = $request->file('inputFile');
+
+            $path = $image->store('images', 'public');
+
+            $task->image = $path;
+        }
+
+        $task->save();
+
+        return redirect()->route('tasks.modify');
+    }
+
+    public function destroy($taskId) {
+        $task = Task::findOrFail($taskId);
+        $task->delete();
+        return redirect()->route('tasks.modify');
+    }
+
 }

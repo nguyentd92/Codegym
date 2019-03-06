@@ -5,7 +5,7 @@
          <div class="title m-b-md">
              Add new Task
          </div>
-         <form class="text-left" method='post' action='{{ route('tasks.store')}}' enctype="multipart/form-data">
+         <form class="text-left" method='post' action='{{ route('tasks.update', $task->id)}}' enctype="multipart/form-data">
          @csrf
              <div class="form-group">
                  <label for="inputTitle">Task title</label>
@@ -13,24 +13,16 @@
                         class="form-control"
                         id="inputTitle"
                         name="inputTitle"
+                        value="{{ $task->title }}"
                         required>
-                        @if ($errors->has('inputTitle'))
-                        <span style="color: red">{{ $errors->first('inputTitle')  }}</span>
-                        @endif
              </div>
-
-             
              <div class="form-group">
                  <label for="inputContent">Task content</label>
                  <textarea class="form-control"
                            id="inputContent"
                            name="inputContent"
-                           rows="3"
-                           required></textarea>
-                           @if ($errors->has('inputContent'))
-                          <span style="color: red">{{ $errors->first('inputContent')  }}</span>                               
-
-                           @endif
+                           rows="6"
+                           required>{{ $task->content }}</textarea>
              </div>
              <div class="form-group">
                  <label for="inputDueDate">Due Date</label>
@@ -38,22 +30,18 @@
                         class="form-control"
                         id="inputDueDate"
                         name="inputDueDate"
+                        value="{{ $task->duedate }}"
                         required>
-                        @if ($errors->has('inputDueDate'))
-                        <span style="color: red">{{ $errors->first('inputDueDate')  }}</span>                               
-
-                         @endif
              </div>
              <div class="form-group">
                  <label for="inputFile">File</label>
+                 Current: 
+                 <img src="storage/{{ $task->image }}" alt="{{ $task->image }}">
+                 <span> {{ $task->image }}</span>
                  <input type="file"
                         class="form-control-file"
                         id="inputFile"
                         name="inputFile">
-                        @if ($errors->has('inputFile'))
-                        <span style="color: red">{{ $errors->first('inputFile')  }}</span>                               
-
-                         @endif
              </div>
              <input type="text" name="_method" id="" value="put" hidden>
              <button type="submit" class="btn btn-primary">Submit</button>

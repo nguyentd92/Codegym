@@ -30,7 +30,7 @@ Route::prefix('customers')->group(function () {
 
     Route::post('{key}/edit', 'CustomerController@update');
   
-    Route::post('/', 'CustomerController@delete' );
+    Route::delete('/', 'CustomerController@delete' );
   });
 
   Route::prefix('tasks')->group(function() {
@@ -39,14 +39,16 @@ Route::prefix('customers')->group(function () {
 
       Route::get('create', 'TasksController@create')->name('tasks.create');
 
-      Route::post('store', 'TasksController@store')->name('tasks.store');
+      Route::put('store', 'TasksController@store')->name('tasks.store');
 
-      Route::get('tasks/{taskId}', 'TasksController@show');
+      Route::get('modify', 'TasksController@modify')->name('tasks.modify');
 
-      Route::get('tasks/{taskId}/edit', 'TasksController@edit');
+      Route::get('{taskId}', 'TasksController@show')->name('tasks.show');
 
-      Route::put('tasks/{taskId}','TasksController@update');
+      Route::get('{taskId}/edit', 'TasksController@edit')->name('tasks.edit');
 
-      Route::delete('tasks/{photo}', 'TasksController@destroy');
+      Route::put('{taskId}/update','TasksController@update')->name('tasks.update');
+
+      Route::delete('{taskId}/destroy', 'TasksController@destroy')->name('tasks.destroy');
       
   });
