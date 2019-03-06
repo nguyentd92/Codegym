@@ -37,7 +37,7 @@
         </div>
           <div class="col-6">
 
-                <form class="navbar-form navbar-left" action="">
+                <form class="navbar-form navbar-left" action="{{ route('customers.index') }}">
               
                   @csrf
               
@@ -47,7 +47,7 @@
               
                             <div class="form-group">
               
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" class="form-control" name="keyword" placeholder="Search">
               
                             </div>
               

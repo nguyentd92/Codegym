@@ -4,6 +4,7 @@ use App\Customer;
 use App\City;
 use http\Env\Response;
 use Illuminate\Http\Request;
+use App\Http\Requests\CustomerStoreRequest;
 use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller{
@@ -14,9 +15,14 @@ class CustomerController extends Controller{
    * @return Response
    */
 
-  public function index(){
-    $customers = Customer::paginate(5);
+  public function index(Request $request){
 
+    $keyword = $request->get('keyword');
+    if ($keyword) {
+      $customers = Customer::where('name', 'like', "%$keyword%")->paginate(5);
+    } else {
+    $customers = Customer::paginate(5);
+    }
     $cities = City::all();
 
     return view('customers.list', compact('customers', 'cities'));
@@ -38,7 +44,7 @@ class CustomerController extends Controller{
    *
    * @return Response
    */
-public function store(Request $request){
+public function store(CustomerStoreRequest $request){
   $customer = new Customer();
   $customer->name     = $request->input('name');
   $customer->email    = $request->input('email');
@@ -75,7 +81,7 @@ public function edit($id){
 * @param  int  $id
 * @return Response
 */
-public function update(Request $request, $id){
+public function update(CustomerStoreRequest $request, $id){
     $customer = Customer::findOrFail($id);
     $customer->name     = $request->input('name');
     $customer->email    = $request->input('email');
