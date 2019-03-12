@@ -33,8 +33,8 @@ Route::prefix('customers')->group(function () {
     Route::delete('/', 'CustomerController@delete' );
   });
 
-  Route::prefix('tasks')->group(function() {
-      
+  Route::group(['prefix'=>'tasks','middleware'=>'auth'], function() {
+
       Route::get('/', 'TasksController@index')->name('tasks.index');
 
       Route::get('create', 'TasksController@create')->name('tasks.create');
@@ -52,3 +52,7 @@ Route::prefix('customers')->group(function () {
       Route::delete('{taskId}/destroy', 'TasksController@destroy')->name('tasks.destroy');
       
   });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -3,25 +3,43 @@
   <component name="ChangeListManager">
     <list default="true" id="c1f929eb-5d40-463d-bcc4-fddfe7cfead8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../BaoCaoCodeGym/~$odeGym]_C0119G1_NGUYENTHANHDANH_BaoCaoTuan3.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/app/Http/Controllers/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/app/Http/Controllers/ShopController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/admin/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/admin/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/admin/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/admin/modify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/admin/modify.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/layouts/shoplayout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/layouts/shoplayout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/shop/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/shop/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/shop/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/shop/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/shop/receipt.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/shop/receipt.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/resources/views/shop/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/resources/views/shop/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlowerShop/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../FlowerShop/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MVC/ProductManagement/.vs/ProductManagement/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../MVC/ProductManagement/.vs/ProductManagement/v15/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MVC/ProductManagement/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../MVC/ProductManagement/.vs/slnx.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test/Authorization/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Test/Authorization/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../blog-site/app/Blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-site/app/Blog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../blog-site/app/Http/Controllers/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-site/app/Http/Controllers/BlogController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../blog-site/resources/views/blog/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-site/resources/views/blog/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blog-site/resources/views/blog/modify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../blog-site/resources/views/blog/modify.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../greeting/app/Http/Controllers/TranslateController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../greeting/resources/views/discount_result.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../greeting/resources/views/discount_result.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../greeting/resources/views/display_discount.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../greeting/resources/views/display_discount.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../greeting/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../greeting/resources/views/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../greeting/resources/views/translation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../greeting/resources/views/translation.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../greeting/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../greeting/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laravel-blog-i18n/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../laravel-blog-i18n/app/Http/Controllers/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manage-customer/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-customer/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manage-customer/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../manage-customer/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../php-management-customer-mvc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../simple_calculator/app/Http/Controllers/CalculatorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../simple_calculator/app/Http/Controllers/CalculatorController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../simple_calculator/resources/views/calculator.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../simple_calculator/resources/views/calculator.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../simple_calculator/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../simple_calculator/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TasksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TasksController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +48,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/modify.blade.php">
           <provider selected="true" editor-type-id="text-editor" />
@@ -45,11 +63,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TasksController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+            <state relative-caret-position="112">
+              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
               <folding>
                 <element signature="e#39#52#0#PHP" expanded="true" />
               </folding>
@@ -60,8 +78,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="-38">
+              <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -76,6 +112,8 @@
       <list>
         <option value="$PROJECT_DIR$/app/Http/Controllers/TasksController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" />
       </list>
     </option>
   </component>
@@ -216,6 +254,17 @@
             <path>
               <item name="task_manager" type="b2602c69:ProjectViewProjectNode" />
               <item name="task_manager" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="task_manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task_manager" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="task_manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task_manager" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -238,6 +287,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Authenticate" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -270,11 +320,13 @@
       <option name="presentableId" value="Default" />
       <updated>1551834147528</updated>
       <workItem from="1551834148769" duration="479000" />
+      <workItem from="1552276647953" duration="13000" />
+      <workItem from="1552365685193" duration="343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="479000" />
+    <option name="totallyTimeSpent" value="835000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -287,15 +339,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -303,10 +351,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,23 +369,37 @@
     <entry file="file://$PROJECT_DIR$/resources/views/modify.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CustomerController.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TasksController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        <state relative-caret-position="112">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
           <folding>
             <element signature="e#39#52#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
         </state>
       </provider>
     </entry>
