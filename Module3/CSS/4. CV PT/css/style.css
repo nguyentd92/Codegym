@@ -1,0 +1,176 @@
+body{
+    margin: auto;
+    height: 1000px;    
+    width: 1000px;
+}
+
+.cv-page {
+    width: 100%;
+    height: 100%;
+}
+
+.cv-page .left {
+    float: left;
+    width: 300px;
+    height: 100%;
+    background-color: #003366
+}
+
+.cv-page .right {
+    width: 700px;
+    height: 100%;
+    float: left;
+    background-color: antiquewhite
+}
+
+/* LEFT CONTENT */
+.head {
+    height: 80px;    
+}
+
+.head h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    margin: 20px 0px;
+}
+
+.photo {
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.info {
+    padding: 3px 25px;
+}
+
+.info-title {
+    font-size: 18px;
+    color: whitesmoke;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10px;
+}
+
+.info label {
+    color: whitesmoke;
+    font-family: 'Courier New'
+}
+
+.hexagon {
+    overflow: hidden;
+    visibility: hidden;
+    -webkit-transform: rotate(120deg);
+       -moz-transform: rotate(120deg);
+        -ms-transform: rotate(120deg);
+         -o-transform: rotate(120deg);
+            transform: rotate(120deg);
+    cursor: pointer;
+    }
+.hexagon-in1 {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(-60deg);
+       -moz-transform: rotate(-60deg);
+        -ms-transform: rotate(-60deg);
+         -o-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+    }
+.hexagon-in2 {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    visibility: visible;
+    -webkit-transform: rotate(-60deg);
+       -moz-transform: rotate(-60deg);
+        -ms-transform: rotate(-60deg);
+         -o-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+    }
+.hexagon2 {
+    width: 200px;
+    height: 400px;
+    margin: -80px 0 0 20px;
+    }
+
+/* RIGHT CONTENT */
+
+.right-content {
+    padding: 10px;
+}
+
+.career {
+    padding-right: 5px;
+    z-index: 1;
+    background-color: antiquewhite;
+    position: relative;
+    float: left;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;    
+}
+
+.tag {
+    position: relative;
+}
+
+.right-body {
+    margin: 10px 0px;
+}
+
+.bar {
+    z-index: 0;
+    position: relative;
+    top: -23px;
+    float: left;
+    width: 100%;
+    height: 10px;
+    border-bottom: 8px #003366 solid;
+}
+
+.career-info-title {
+    font-size: 18px;
+    color: #003366;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+}
+
+.career-info-content {
+    color: #003366;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.column {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.year-column {
+    float: left;
+    width: 20%;    
+}
+
+.year {    
+    margin-top: 6px;
+    margin-bottom: -10px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #003366;
+    text-transform: uppercase;
+}
+
+.content-column {
+    width: 80%;
+    float: left;   
+}
+
+.row {
+    clear: both;
+}
+
