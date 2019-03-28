@@ -20,7 +20,7 @@ body{
     width: 700px;
     height: 100%;
     float: left;
-    background-color: antiquewhite
+    background-color: rgb(226, 224, 221)
 }
 
 /* LEFT CONTENT */
@@ -104,7 +104,7 @@ body{
 .career {
     padding-right: 5px;
     z-index: 1;
-    background-color: antiquewhite;
+    background-color: rgb(226, 224, 221);
     position: relative;
     float: left;
     text-transform: uppercase;
