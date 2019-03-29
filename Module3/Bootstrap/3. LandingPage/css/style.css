@@ -1,0 +1,48 @@
+body {
+    margin:auto;    
+    background-color: #e8e2db;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+small, .small {
+    font-size: 85%;
+    font-weight: 400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.btn-add-cart {
+    background-color: #EF6C00;
+    color: #FFFFFF;
+}
+
+.btn-add-cart:hover{
+    background-color: #FC7400;
+    color: #FFFFFF;
+}
+
+.btn-more-info {
+    background: #FFE0B2;
+    color: #FFFFFF;
+}
+
+.btn-more-info:hover {
+    background: #fad390;
+    color: #FFFFFF;
+}
+
+.card-body {
+    color: #3c6382;
+}
+
+@media (max-width: 767px) {                  
+    .content-to-hide {
+       display: none;
+    }
+}
+
+#favourites {
+    color: #EF6C00;
+}

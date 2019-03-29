@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div>
+        <h2>Find():</h2>
+        <button onclick="Find()">Find()</button>
+        <ul class="level-1">
+            <li class="item-i">I</li>
+            <li class="item-ii">II
+                <ul class="level-2">
+                    <li class="item-a">A</li>
+                    <li class="item-b">B
+                        <ul class="level-3">
+                            <li class="item-1">1</li>
+                            <li class="item-2">2</li>
+                            <li class="item-3">3</li>
+                        </ul>
+                    </li>
+                    <li class="item-c">C</li>
+                </ul>
+            </li>
+            <li class="item-iii">III</li>
+        </ul>
+        <script>
+            function Find() { $("li.item-ii").find("li").css("background-color", "red") };
+        </script>
+    </div>
+    <div>
+        <h2>Hide()</h2>
+        <button id="button-hide" onclick="Hide()">Hide</button>
+        <p id="show-hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, totam ab quo dolore neque odit
+            sequi delectus distinctio saepe vel. Eum ipsam nisi porro. Vel voluptate itaque voluptas ab ullam!</p>
+        <script>
+            function Hide() {
+                $("#show-hide").hide();
+            }
+        </script>
+    </div>
+    <div>
+        <h2>Show()</h2>
+        <button onclick="show()">Show()</button>
+        <script>
+            function show() {
+                $("#show-hide").show();
+            }
+        </script>
+    </div>
+    <div>
+        <h2>Toggle()</h2>
+        <button onclick="toggle()">Toggle</button>
+        <p id="toggle-p">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat at minima magnam suscipit a
+            molestiae accusantium eum porro, nisi provident labore, deleniti sit! Quaerat earum iste alias hic sequi
+            voluptate.</p>
+        <script>
+            function toggle() {
+                $("#toggle-p").toggle();
+            }
+        </script>
+    </div>
+    <div>
+        <h2>Animate()</h2>
+        <button id="animate">Animate()</button>
+        <div id="box" style="background:#98bf21;height:100px;width:100px;margin:6px;"></div>
+        <script>
+            $(document).ready(function () {
+                $("#animate").click(function () {
+                    $("#box").animate({ width: "400px" });
+                })
+                $("#animate").click(function () {
+                    $("#box").animate({ width: "100px" });
+                })
+            });
+        </script>
+    </div>
+    <div>
+        <h2>FadeIn(), FadeOut()</h2>
+        <div id="fadebox" style="background:#98bf21;height:100px;width:100px;margin:6px;"></div>
+        <button id="fadein">FadeIn()</button>
+        <button id="fadeout">FadeIn()</button>
+        <script>
+            $(document).ready(function () {
+                $("#fadein").click(function () {
+                    $("#fadebox").fadeIn();
+                });
+            });
+            $(document).ready(function () {
+                $("#fadeout").click(function () {
+                    $("#fadebox").fadeOut();
+                });
+            });
+        </script>
+    </div>
+    <div>
+        <h2>SlideUp(), SlideOut()</h2>
+        <div id="slidebox" style="background:#98bf21;height:100px;width:100px;margin:6px;"></div>
+        <button id="slideup">slideup()</button>
+        <button id="slideout">slideout()</button>
+        <script>
+            $(document).ready(function () {
+                $("#slideup").click(function () {
+                    $("#slidebox").slideUp();
+                });
+            });
+            $(document).ready(function () {
+                $("#slideout").click(function () {
+                    $("#slidebox").slideDown();
+                });
+            });
+        </script>
+    </div>
+    <div>
+        <h2>HTML()</h2>
+        <button id="btn-html">Html()</button>
+        <script>
+            $(document).ready(function () {
+                $("#btn-html").click(function () {
+                    $("p").html("HTML click");
+                });
+            })
+        </script>
+    </div>
+    <div>
+        <h2>Append() Prepend()</h2>
+        <ul>
+            <li>Hello</li>
+        </ul>
+        <button id="btn-prepend">Prepend()</button>
+        <button id="btn-append">Append()</button>
+        <script>
+            $(document).ready(function () {
+                $("#btn-append").click(function () {
+                    $("ul").append("<li>Hello</li>");
+                });
+                $("#btn-prepend").click(function () {
+                    $("ul").prepend("<li>First</li>");
+                });
+
+            });
+        </script>
+    </div>
+    <div>
+        <h2>On() Off()</h2>
+        <p id="on">On()</p>
+        <button id="off">Off()</button>
+        <script>
+            $(document).ready(function () {
+                $("#on").on("click", function () {
+                    alert("Click");
+                })
+                $("#off").click(function () {
+                    $("#on").off("click");
+                });
+            });
+        </script>
+    </div>
+    <div>
+        <h2>CSS()</h2>
+        <button id="change_color">Change Color</button>
+        <script>
+            $(document).ready(function () {
+
+                $("#change_color").click(function () {
+                    $('p').css('color', 'red');
+                });
+            });
+        </script>
+    </div>
+    <div>
+        <h2>ATTR()</h2>
+        <button id="attr">Change Font-size</button>
+        <img src="https://www.w3schools.com/jquery/img_pulpitrock.jpg" alt="">
+        <script>
+            $(document).ready(function () {
+                $("#attr").click(function () {
+                    $('img').attr('width', '30px');
+                });
+            });
+        </script>
+    </div>
+    <div>
+        <h2>VAL()</h2>
+        <input type="text">
+        <button id="val">Set Value</button>
+        <script>
+            $("#val").click(function () {
+                $("input:text").val("Glenn Quagmire");
+            });
+        </script>
+    </div>
+    <div>
+        <h2>Text()</h2>
+        <button id="text">Change text()</button>
+        <script>
+            $(document).ready(function () {
+                $("#text").click(function () {
+                    $("p").text("Hello world!");
+                });
+            });
+        </script>
+    </div>
+    <div>
+        <h2>Each()</h2>
+        <button id="each">Change text()</button>
+        <script>
+            $("#each").click(function () {
+                $("#each").each(function () {
+                    alert($(this).text())
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
